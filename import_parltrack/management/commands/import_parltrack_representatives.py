@@ -138,8 +138,6 @@ def change_representative_details(representative, mep_json):
     representative.last_name = mep_json["Name"]["family"]
     representative.full_name = "%s %s" % (mep_json["Name"]["sur"], mep_json["Name"]["family"])
 
-    representative.twitter = mep_json.get("Twitter", [None])[0]
-    representative.facebook = mep_json.get("Facebook", [None])[0]
     representative.photo = mep_json["Photo"]
 
     fix_last_name_with_prefix = {
@@ -360,9 +358,24 @@ def add_contacts(representative, mep_json):
                 email=mail
             )
     # WebSite
-    websites = mep_json.get('Homepage', []) + mep_json.get('Twitter', []) + mep_json.get('Facebook', [])
+    websites = mep_json.get('Homepage', [])
     for url in websites:
         WebSite.objects.create(
             url=url,
             representative=representative
         )
+
+    if mep_json.get('Twitter', None):
+        WebSite.objects.create(
+            representative=representative,
+            kind='twitter',
+            url= mep_json.get('Twitter')[0]
+        )
+
+    if mep_json.get('Facebook', None):
+        WebSite.objects.create(
+            representative=representative,
+            kind='facebook',
+            url= mep_json.get('Facebook')[0]
+        )
+
