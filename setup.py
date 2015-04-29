@@ -14,15 +14,6 @@ setup(
     keywords='django government parliament',
     install_requires=[
         'ijson',
-        'pyprind',
-        'django-uuidfield',
-    ],
-    extras_require={
-        'celery': 'celery',
-        'api': 'djangorestframework',
-    },
-    tests_require=[
-        'django',
     ],
     classifiers=[
         'Development Status :: 1 - Alpha/Planning',
