@@ -334,7 +334,7 @@ def add_contacts(representative, mep_json):
                     name = "Strasbourg European Parliament"
                 
 
-                    address_model = Address.objects.get_or_create(
+                    address_model, created = Address.objects.get_or_create(
                         representative=representative,
                         country=country,
                         city=city,
@@ -346,7 +346,7 @@ def add_contacts(representative, mep_json):
                         kind='official',
                         name=name
                     )
-                    
+
                     Phone.objects.get_or_create(
                         representative=representative,
                         address=address_model,
