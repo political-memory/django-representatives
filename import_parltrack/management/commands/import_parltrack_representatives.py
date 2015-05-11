@@ -84,7 +84,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         download_file()
-
+        clean_previous_data()
         print "load json"
         meps = ijson.items(open(JSON_DUMP_LOCALIZATION), 'item')
         # print "Set all current active mep to unactive before importing"
@@ -125,7 +125,14 @@ def manage_mep(mep_json):
 
     representative.save()
 
-
+def clean_previous_data():
+    Address.objects.all().delete()
+    Constituency.objects.all().delete()
+    Email.objects.all().delete()
+    Group.objects.all().delete()
+    Phone.objects.all().delete()
+    Mandate.objects.all().delete()
+    
 def change_representative_details(representative, mep_json):
     representative.active = mep_json['active']
 
@@ -325,7 +332,7 @@ def add_contacts(representative, mep_json):
                     name = "Strasbourg European Parliament"
                 
 
-                    address_model = Address.objects.create(
+                    address_model = Address.objects.get_or_create(
                         representative=representative,
                         country=country,
                         city=city,
@@ -338,7 +345,7 @@ def add_contacts(representative, mep_json):
                         name=name
                     )
                     
-                    Phone.objects.create(
+                    Phone.objects.get_or_create(
                         representative=representative,
                         address=address_model,
                         kind='office phone',
@@ -360,20 +367,20 @@ def add_contacts(representative, mep_json):
     # WebSite
     websites = mep_json.get('Homepage', [])
     for url in websites:
-        WebSite.objects.create(
+        WebSite.objects.get_or_create(
             url=url,
             representative=representative
         )
 
     if mep_json.get('Twitter', None):
-        WebSite.objects.create(
+        WebSite.objects.get_or_create(
             representative=representative,
             kind='twitter',
             url= mep_json.get('Twitter')[0]
         )
 
     if mep_json.get('Facebook', None):
-        WebSite.objects.create(
+        WebSite.objects.get_or_create(
             representative=representative,
             kind='facebook',
             url= mep_json.get('Facebook')[0]
