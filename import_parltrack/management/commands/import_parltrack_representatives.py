@@ -269,8 +269,8 @@ def add_mandates(representative, mep_json):
     for mandate_data in mep_json.get('Constituencies', []):
         if not mandate_data:
             continue
-        
-        _country = Country.objects.get(name=mandate_data["country"])
+
+        _country = Country.objects.get(name=mandate_data['country'])
 
         group, cr = Group.objects.get_or_create(
             abbreviation=_country.code,
