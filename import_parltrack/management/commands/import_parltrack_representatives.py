@@ -85,6 +85,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         download_file()
         clean_previous_data()
+
         print "load json"
         meps = ijson.items(open(JSON_DUMP_LOCALIZATION), 'item')
         # print "Set all current active mep to unactive before importing"
@@ -124,6 +125,7 @@ def manage_mep(mep_json):
     
 
     representative.save()
+
 
 def clean_previous_data():
     Address.objects.all().delete()
@@ -276,8 +278,8 @@ def add_mandates(representative, mep_json):
     for mandate_data in mep_json.get('Constituencies', []):
         if not mandate_data:
             continue
-        
-        _country = Country.objects.get(name=mandate_data["country"])
+
+        _country = Country.objects.get(name=mandate_data['country'])
 
         group, cr = Group.objects.get_or_create(
             abbreviation=_country.code,
@@ -380,6 +382,7 @@ def add_contacts(representative, mep_json):
         )
 
     if mep_json.get('Facebook', None):
+
         WebSite.objects.get_or_create(
             representative=representative,
             kind='facebook',
