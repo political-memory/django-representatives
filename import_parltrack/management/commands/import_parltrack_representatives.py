@@ -88,30 +88,10 @@ class Command(BaseCommand):
 
         print "load json"
         meps = ijson.items(open(JSON_DUMP_LOCALIZATION), 'item')
-        # print "Set all current active mep to unactive before importing"
         with transaction.atomic():
-            # MEP.objects.filter(active=True).update(active=False)
-            # a = 0
-            for mep_json in meps:
-                # TODO only active ?
-                # print(mep_json.get("active"))
-                
+            for i, mep_json in enumerate(meps):
                 manage_mep(mep_json)
-                """
-                if not mep_json.get("active"):
-                    continue
-                a += 1
-                print a, "-", mep_json["Name"]["full"].encode("Utf-8")
-                in_db_mep = MEP.objects.filter(ep_id=int(mep_json["UserID"]))
-                if in_db_mep:
-                    mep = in_db_mep[0]
-                    mep.active = mep_json['active']
-                    manage_mep(mep, mep_json)
-                else:
-                    mep = create_mep(mep_json)
-            clean()
-        print
-                """
+                print i, '-', mep_json['Name']['full'].encode('utf-8')
 
 def manage_mep(mep_json):
     remote_id = mep_json['UserID']
@@ -346,7 +326,7 @@ def add_contacts(representative, mep_json):
                         kind='official',
                         name=name
                     )
-                    
+
                     Phone.objects.get_or_create(
                         representative=representative,
                         address=address_model,
