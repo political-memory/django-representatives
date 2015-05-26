@@ -1,3 +1,5 @@
+# coding: utf-8
+
 # This file is part of compotista.
 #
 # compotista is free software: you can redistribute it and/or modify
@@ -16,9 +18,6 @@
 #
 # Copyright (C) 2013 Laurent Peuch <cortex@worlddomination.be>
 # Copyright (C) 2015 Arnaud Fabre <af@laquadrature.net>
-
-# coding: utf-8
-
 
 '''
 
