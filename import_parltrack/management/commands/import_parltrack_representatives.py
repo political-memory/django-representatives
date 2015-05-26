@@ -1,13 +1,11 @@
-# coding: utf-8
-
-# This file is part of django-parltrack-meps.
+# This file is part of compotista.
 #
-# django-parltrack-meps is free software: you can redistribute it and/or modify
+# compotista is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
 # published by the Free Software Foundation, either version 3 of
 # the License, or any later version.
 #
-# django-parltrack-meps is distributed in the hope that it will
+# compotista is distributed in the hope that it will
 # be useful, but WITHOUT ANY WARRANTY; without even the implied
 # warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 # See the GNU Affero General Public License for more details.
@@ -16,74 +14,49 @@
 # License along with Foobar.
 # If not, see <http://www.gnu.org/licenses/>.
 #
-# Copyright (C) 2013  Laurent Peuch <cortex@worlddomination.be>
+# Copyright (C) 2013 Laurent Peuch <cortex@worlddomination.be>
+# Copyright (C) 2015 Arnaud Fabre <af@laquadrature.net>
+
+# coding: utf-8
+
+
+'''
+
+This is a django command for importing Member of the European
+Parliament as django-representative model.  It could serve as base for
+future import commands from other sources a good recommandation is
+that it should be idempotent. At least it must not import multiple
+times the same representatives and mandates.
+
+It should be named "compotista-import_<server_name>"
+
+'''
 
 import os
 import ijson
 import urllib
 
 from tempfile import gettempdir
-
 from os.path import join
 from datetime import datetime
 
-
-# from guess_language import guessLanguage
-# from lxml import etree
 from django.template.defaultfilters import slugify
-
 from django.core.management.base import BaseCommand
-# from django.db.models import Count
 from django.db import transaction
 
 from representatives.models import Representative, Group, Constituency, Mandate, Address, Country, Phone, Email, WebSite
 
-# from import_parltrack.models import Country
-
-JSON_DUMP_ARCHIVE_LOCALIZATION = join(gettempdir(), "ep_meps_current.json.xz")
-JSON_DUMP_ARCHIVE_LOCALIZATION_TAG = join(gettempdir(), "ep_meps_current.hash")
-JSON_DUMP_LOCALIZATION = join(gettempdir(), "ep_meps_current.json")
+JSON_DUMP_ARCHIVE_LOCALIZATION = join(gettempdir(), 'ep_meps_current.json.xz')
+JSON_DUMP_LOCALIZATION = join(gettempdir(), 'ep_meps_current.json')
 PARLTRACK_URL = 'http://parltrack.euwiki.org/dumps/ep_meps_current.json.xz'
-CURRENT_TERM = 8
+
 _parse_date = lambda date: datetime.strptime(date, "%Y-%m-%dT00:%H:00")
-
-
-def download_file():
-    if os.system("which unxz > /dev/null") != 0:
-        raise Exception("unxz binary missing, please install xz")
-
-    if os.path.exists(JSON_DUMP_ARCHIVE_LOCALIZATION_TAG):
-        with open(JSON_DUMP_ARCHIVE_LOCALIZATION_TAG, 'r') as f:
-            etag = f.read()
-    else:
-        etag = False
-    
-    request = urllib.urlopen(PARLTRACK_URL)
-    request_etag = request.info()['ETag']
-
-    if not etag or not etag == request_etag:
-        print "clean old downloaded files"
-        
-        if os.path.exists(JSON_DUMP_ARCHIVE_LOCALIZATION):
-            os.remove(JSON_DUMP_ARCHIVE_LOCALIZATION)
-            
-        if os.path.exists(JSON_DUMP_LOCALIZATION):
-            os.remove(JSON_DUMP_LOCALIZATION)
-
-        urllib.urlretrieve(PARLTRACK_URL, JSON_DUMP_ARCHIVE_LOCALIZATION)
-
-        with open(JSON_DUMP_ARCHIVE_LOCALIZATION_TAG, 'w+') as f:
-            f.write(request_etag)
-
-        print "unxz dump"
-        os.system("unxz %s" % JSON_DUMP_ARCHIVE_LOCALIZATION)
-
 
 class Command(BaseCommand):
     help = "Update the eurodeputies data by pulling it from parltrack"
 
     def handle(self, *args, **options):
-        download_file()
+        download_xz_file(PARLTRACK_URL, JSON_DUMP_ARCHIVE_LOCALIZATION)
         clean_previous_data()
 
         print "load json"
@@ -93,19 +66,43 @@ class Command(BaseCommand):
                 manage_mep(mep_json)
                 print i, '-', mep_json['Name']['full'].encode('utf-8')
 
-def manage_mep(mep_json):
-    remote_id = mep_json['UserID']
-    representative, created = Representative.objects.get_or_create(remote_id=remote_id)
-    # Save representative attributes
-    change_representative_details(representative, mep_json)
-    # Add Mandates
-    add_mandates(representative, mep_json)
-    # Add Contacts
-    add_contacts(representative, mep_json)
+def download_xz_file(source, destination):
+    '''
+    This function download a xz compressed file.  It can prevent
+    multiple download of the same file by looking at the ETag HTTP
+    Header
+    '''
+    # File saving the HTTP Etag information
+    etag_location = destination + '.hash'
     
+    if os.system("which unxz > /dev/null") != 0:
+        raise Exception("unxz binary missing, please install xz")
 
-    representative.save()
+    if os.path.exists(etag_location):
+        with open(etag_location, 'r') as f:
+            etag = f.read()
+    else:
+        etag = False
+    
+    request = urllib.urlopen(source)
+    request_etag = request.info()['ETag']
 
+    if not etag or not etag == request_etag:
+        print "clean old downloaded files"
+        
+        if os.path.exists(destination):
+            os.remove(destination)
+            
+        if os.path.exists(destination):
+            os.remove(destination)
+
+        urllib.urlretrieve(source, destination)
+
+        with open(etag_location, 'w+') as f:
+            f.write(request_etag)
+
+        print "unxz dump"
+        os.system("unxz %s" % destination)
 
 def clean_previous_data():
     Address.objects.all().delete()
@@ -114,8 +111,23 @@ def clean_previous_data():
     Group.objects.all().delete()
     Phone.objects.all().delete()
     Mandate.objects.all().delete()
-    
-def change_representative_details(representative, mep_json):
+
+def manage_mep(mep_json):
+    '''
+    Import a mep as a representative from the json dict fetched from
+    parltrack
+    '''
+    remote_id = mep_json['UserID']
+    representative, created = Representative.objects.get_or_create(remote_id=remote_id)
+    # Save representative attributes
+    save_representative_details(representative, mep_json)
+    # Add Mandates
+    add_mandates(representative, mep_json)
+    # Add Contacts
+    add_contacts(representative, mep_json)
+    representative.save()
+
+def save_representative_details(representative, mep_json):
     representative.active = mep_json['active']
 
     if mep_json.get("Birth"):
@@ -166,7 +178,6 @@ def change_representative_details(representative, mep_json):
     elif representative.last_name == "J.A.J. STASSEN":
         representative.last_name_with_prefix = "STASSEN"
 
-    # mep.swaped_name = "%s %s" % (mep.last_name, mep.first_name)
     gender_convertion_dict = {
         u"F": 1,
         u"M": 2
@@ -183,7 +194,6 @@ def change_representative_details(representative, mep_json):
         else representative.first_name + " " + representative.last_name
     )
 
-
 def create_mandate(mandate_data, representative, group, constituency):
     if mandate_data.get("start"):
         begin_date = _parse_date(mandate_data.get("start"))
@@ -199,7 +209,6 @@ def create_mandate(mandate_data, representative, group, constituency):
         begin_date=begin_date,
         end_date=end_date
     )
-
 
 def add_mandates(representative, mep_json):
     # Committee
@@ -288,7 +297,6 @@ def add_mandates(representative, mep_json):
         )
         
         create_mandate(mandate_data, representative, group, constituency)
-    
 
 def add_contacts(representative, mep_json):
     # Addresses
