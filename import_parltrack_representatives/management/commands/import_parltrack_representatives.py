@@ -74,7 +74,7 @@ def download_xz_file(source, destination):
     '''
     # File saving the HTTP Etag information
     etag_location = destination + '.hash'
-    
+
     if os.system("which unxz > /dev/null") != 0:
         raise Exception("unxz binary missing, please install xz")
 
@@ -83,16 +83,16 @@ def download_xz_file(source, destination):
             etag = f.read()
     else:
         etag = False
-    
+
     request = urllib.urlopen(source)
     request_etag = request.info()['ETag']
 
     if not etag or not etag == request_etag:
         print "clean old downloaded files"
-        
+
         if os.path.exists(destination):
             os.remove(destination)
-            
+
         if os.path.exists(destination):
             os.remove(destination)
 
@@ -186,11 +186,11 @@ def save_representative_details(representative, mep_json):
         representative.gender = gender_convertion_dict.get(mep_json['Gender'], 0)
     else:
         representative.gender = 0
-    
+
     representative.cv = "\n".join([cv_title for cv_title in mep_json.get("CV", [])])
-        
+
     representative.slug = slugify(
-        representative.full_name if representative.full_name 
+        representative.full_name if representative.full_name
         else representative.first_name + " " + representative.last_name
     )
 
@@ -199,7 +199,7 @@ def create_mandate(mandate_data, representative, group, constituency):
         begin_date = _parse_date(mandate_data.get("start"))
     if mandate_data.get("end"):
         end_date = _parse_date(mandate_data.get("end"))
-    
+
     role = mandate_data['role'] if 'role' in mandate_data else None
     Mandate.objects.create(
         representative=representative,
@@ -226,7 +226,7 @@ def add_mandates(representative, mep_json):
 
             create_mandate(mandate_data, representative, group, constituency)
 
-    # Delegations 
+    # Delegations
     for mandate_data in mep_json.get('Delegations', []):
         group, cr = Group.objects.get_or_create(
             kind='delegation',
@@ -249,7 +249,7 @@ def add_mandates(representative, mep_json):
             abbreviation = mandate_data.get('groupid')[0]
         else:
             abbreviation = mandate_data.get('groupid')
-            
+
         abbreviation = convert.get(abbreviation, abbreviation)
         group, cr = Group.objects.get_or_create(
             abbreviation=abbreviation,
@@ -275,14 +275,14 @@ def add_mandates(representative, mep_json):
             kind='country',
             name=_country.name
         )
-        
+
         local_party = mandate_data['party'] if mandate_data['party'] and mandate_data['party'] != '-' else 'unknown'
         constituency, cr = Constituency.objects.get_or_create(
             name=local_party
         )
-        
+
         create_mandate(mandate_data, representative, group, constituency)
-        
+
     # Organisations
     for mandate_data in mep_json.get('Staff', []):
 
@@ -295,14 +295,14 @@ def add_mandates(representative, mep_json):
         constituency, cr = Constituency.objects.get_or_create(
             name='European Parliament'
         )
-        
+
         create_mandate(mandate_data, representative, group, constituency)
 
 def add_contacts(representative, mep_json):
     # Addresses
     if mep_json.get('Addresses', None):
         address = mep_json.get('Addresses')
-        
+
         belgium = Country.objects.get(name="Belgium")
         france = Country.objects.get(name="France")
 
@@ -320,7 +320,7 @@ def add_contacts(representative, mep_json):
                     number = '1'
                     postcode = '67070'
                     name = "Strasbourg European Parliament"
-                
+
 
                     address_model, created = Address.objects.get_or_create(
                         representative=representative,
@@ -347,7 +347,7 @@ def add_contacts(representative, mep_json):
         mails = mep_json.get('Mail')
         if type(mails) is not list:
             mails = list(mails)
-        
+
         for mail in mails:
             Email.objects.get_or_create(
                 representative=representative,
@@ -376,4 +376,3 @@ def add_contacts(representative, mep_json):
             kind='facebook',
             url= mep_json.get('Facebook')[0]
         )
-
