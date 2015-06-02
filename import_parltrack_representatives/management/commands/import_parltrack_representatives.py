@@ -30,13 +30,14 @@ times the same representatives and mandates.
 It should be named "compotista-import_<server_name>"
 
 '''
-
 import os
 import ijson
-import urllib
+import pyprind
+
+from urllib import urlopen, urlretrieve
+from lxml import etree
 
 from tempfile import gettempdir
-from os.path import join
 from datetime import datetime
 
 from django.template.defaultfilters import slugify
@@ -45,8 +46,8 @@ from django.db import transaction
 
 from representatives.models import Representative, Group, Constituency, Mandate, Address, Country, Phone, Email, WebSite
 
-JSON_DUMP_ARCHIVE_LOCALIZATION = join(gettempdir(), 'ep_meps_current.json.xz')
-JSON_DUMP_LOCALIZATION = join(gettempdir(), 'ep_meps_current.json')
+JSON_DUMP_ARCHIVE_LOCALIZATION = os.path.join(gettempdir(), 'ep_meps_current.json.xz')
+JSON_DUMP_LOCALIZATION = os.path.join(gettempdir(), 'ep_meps_current.json')
 PARLTRACK_URL = 'http://parltrack.euwiki.org/dumps/ep_meps_current.json.xz'
 
 _parse_date = lambda date: datetime.strptime(date, "%Y-%m-%dT00:%H:00")
@@ -57,14 +58,25 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         download_xz_file(PARLTRACK_URL, JSON_DUMP_ARCHIVE_LOCALIZATION)
         clean_previous_data()
-
+        
         print "load json"
-        meps = ijson.items(open(JSON_DUMP_LOCALIZATION), 'item')
-        with transaction.atomic():
-            for i, mep_json in enumerate(meps):
-                manage_mep(mep_json)
-                print i, '-', mep_json['Name']['full'].encode('utf-8')
+        with open(JSON_DUMP_LOCALIZATION) as json_data_file:
+            bar = pyprind.ProgBar(get_number_of_meps())
+            meps = ijson.items(json_data_file, 'item')
+            with transaction.atomic():
+                for i, mep_json in enumerate(meps):
+                    manage_mep(mep_json)
+                    mep_id = '{} - {}'.format(i, mep_json['Name']['full'].encode('utf-8'))
+                    bar.update(item_id = mep_id)
+            print(bar)
 
+def get_number_of_meps():
+    response = urlopen('http://parltrack.euwiki.org/')
+    htmlparser = etree.HTMLParser()
+    tree = etree.parse(response, htmlparser)
+    e = tree.xpath(".//*[@id='stats']/ul/li[1]")[0]
+    return e.text.split(' ')[-1]
+    
 def download_xz_file(source, destination):
     '''
     This function download a xz compressed file.  It can prevent
@@ -83,7 +95,7 @@ def download_xz_file(source, destination):
     else:
         etag = False
 
-    request = urllib.urlopen(source)
+    request = urlopen(source)
     request_etag = request.info()['ETag']
 
     if not etag or not etag == request_etag:
@@ -95,7 +107,7 @@ def download_xz_file(source, destination):
         if os.path.exists(destination):
             os.remove(destination)
 
-        urllib.urlretrieve(source, destination)
+        urlretrieve(source, destination)
 
         with open(etag_location, 'w+') as f:
             f.write(request_etag)
