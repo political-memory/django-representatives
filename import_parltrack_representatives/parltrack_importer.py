@@ -40,25 +40,25 @@ class GenericImporter(object):
 
     def touch_model(self, model, **data):
         '''
-        This method create or look up a model with the given data 
-        it saves the given model if it exists, updating its 
+        This method create or look up a model with the given data
+        it saves the given model if it exists, updating its
         updated field
-        '''        
+        '''
         instance, created = model.objects.get_or_create(**data)
-        
+
         if not created:
             if instance.updated < self.import_start_datetime:
                 instance.save()     # Updates updated field
 
         return (instance, created)
-        
+
     def do_import(self):
         '''
-        This is the main import method, it should be overrided by 
+        This is the main import method, it should be overrided by
         custom importers
         '''
         pass
-    
+
     def process(self):
         self.pre_import()
         self.do_import()
@@ -77,16 +77,16 @@ class FileImporter(GenericImporter):
 
     def post_download(self, destination, downloaded):
         pass
-    
+
     def download_file(self):
         url_hash = hashlib.sha1(self.url).hexdigest()
         destination = os.path.join(gettempdir(), url_hash)
         etag_location = os.path.join(gettempdir(), url_hash + '.hash')
         self.pre_download(destination)
-        
+
         request = urlopen(self.url)
         etag = False
-        
+
         if self.check_etag and os.path.exists(etag_location):
             # Check etag cache
             request_etag = request.info()['ETag']
@@ -115,7 +115,7 @@ class FileImporter(GenericImporter):
 class ParltrackImporter(FileImporter):
     url = 'http://parltrack.euwiki.org/dumps/ep_meps_current.json.xz'
     check_etag = True
-    
+
     def post_download(self, destination, downloaded):
         '''
         Uncompress xz file
@@ -136,7 +136,8 @@ class ParltrackImporter(FileImporter):
         '''
         logger.info('start processing representatives')
         with open(self.downloaded_file, 'r') as json_data_file:
-            for mep in ijson.items(json_data_file, 'item'):
+            for i,mep in enumerate(ijson.items(json_data_file, 'item')):
+                logger.info(u'{}. Processing representative {}'.format(i, mep['UserID']))
                 self.manage_mep(mep)
 
     def manage_mep(self, mep_json):
@@ -146,7 +147,6 @@ class ParltrackImporter(FileImporter):
         '''
         remote_id = mep_json['UserID']
         representative, _ = Representative.objects.get_or_create(remote_id=remote_id)
-        logger.info(u'Processing representative {}'.format(remote_id))
         # Save representative attributes
         self.save_representative_details(representative, mep_json)
         # Add Mandates
@@ -283,13 +283,13 @@ class ParltrackImporter(FileImporter):
                 abbreviation = mandate_data.get('groupid')
 
             abbreviation = convert.get(abbreviation, abbreviation)
-            group, _ = self.touch_model(model=Group, 
+            group, _ = self.touch_model(model=Group,
                 abbreviation=abbreviation,
                 kind='group',
                 name=mandate_data['Organization']
             )
 
-            constituency, _ = self.touch_model(model=Constituency, 
+            constituency, _ = self.touch_model(model=Constituency,
                 name='European Parliament'
             )
 
@@ -302,14 +302,14 @@ class ParltrackImporter(FileImporter):
 
             _country = Country.objects.get(name=mandate_data['country'])
 
-            group, _ = self.touch_model(model=Group, 
+            group, _ = self.touch_model(model=Group,
                 abbreviation=_country.code,
                 kind='country',
                 name=_country.name
             )
 
             local_party = mandate_data['party'] if mandate_data['party'] and mandate_data['party'] != '-' else 'unknown'
-            constituency, _ = self.touch_model(model=Constituency, 
+            constituency, _ = self.touch_model(model=Constituency,
                 name=local_party
             )
 
@@ -324,7 +324,7 @@ class ParltrackImporter(FileImporter):
                 name=mandate_data['Organization']
             )
 
-            constituency, _ = self.touch_model(model=Constituency, 
+            constituency, _ = self.touch_model(model=Constituency,
                 name='European Parliament'
             )
 
@@ -367,7 +367,7 @@ class ParltrackImporter(FileImporter):
                             name=name
                         )
 
-                        self.touch_model(model=Phone, 
+                        self.touch_model(model=Phone,
                             representative=representative,
                             address=address_model,
                             kind='office phone',
