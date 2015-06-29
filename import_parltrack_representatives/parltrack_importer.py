@@ -19,11 +19,7 @@ from representatives.models import (Representative, Group,
 
 _parse_date = lambda date: datetime.strptime(date, "%Y-%m-%dT00:%H:00").date()
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
-steam_handler = logging.StreamHandler()
-steam_handler.setLevel(logging.DEBUG)
-logger.addHandler(steam_handler)
+logger = logging.getLogger('compotista.importers.' + __name__)
 
 class GenericImporter(object):
     """
