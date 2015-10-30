@@ -1,0 +1,11 @@
+sudo: false
+language: python
+python:
+  - "2.7"
+install:
+  - pip install django
+  - pip install -r test_project/requirements.txt
+  - pip install -e .
+script:
+  - test_project/manage.py migrate
+  - test_project/manage.py import_parltrack_representatives
