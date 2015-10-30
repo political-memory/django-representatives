@@ -14,7 +14,7 @@ setup(
     keywords='django government parliament',
     install_requires=[
         'ijson',
-    ]
+    ],
     classifiers=[
         'Development Status :: 1 - Alpha/Planning',
         'Environment :: Web Environment',
