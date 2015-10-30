@@ -24,12 +24,19 @@ from __future__ import absolute_import
 from django.core.management.base import BaseCommand
 from import_parltrack_representatives.parltrack_importer import ParltrackImporter
 
-from celery import shared_task
+try:
+    from celery import shared_task
+except ImportError:
+    shared_task = None
 
-@shared_task
+
 def do_import():
     importer = ParltrackImporter()
     importer.process()
+
+
+if shared_task:
+    do_import = shared_task(do_import)
 
 
 class Command(BaseCommand):
