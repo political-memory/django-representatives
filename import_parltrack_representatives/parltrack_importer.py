@@ -1,5 +1,6 @@
 # coding: utf-8
 
+import time
 import os
 import logging
 import hashlib
@@ -112,6 +113,18 @@ class ParltrackImporter(FileImporter):
     url = 'http://parltrack.euwiki.org/dumps/ep_meps_current.json.xz'
     check_etag = True
 
+    def _travis(self):
+        """ Avoid being killed after 10 minutes without output """
+        if not os.environ.get('TRAVIS', False):
+            return
+
+        now = time.time()
+        last_output = getattr(self, '_travis_last_output', None)
+
+        if last_output is None or now - last_output >= 530:
+            print('Do not kill me !')
+            self._travis_last_output = now
+
     def post_download(self, destination, downloaded):
         '''
         Uncompress xz file
@@ -133,6 +146,7 @@ class ParltrackImporter(FileImporter):
         logger.info('start processing representatives')
         with open(self.downloaded_file, 'r') as json_data_file:
             for i,mep in enumerate(ijson.items(json_data_file, 'item')):
+                self._travis()
                 logger.info(u'{}. Processing representative {}'.format(i, mep['UserID']))
                 self.manage_mep(mep)
 
