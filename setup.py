@@ -2,9 +2,9 @@ from setuptools import setup, find_packages
 
 
 setup(
-    name='compotista-import-parltrack',
+    name='import-parltrack-representatives',
     version='0.0.1',
-    description='Base app for importing parltrack votes into compotista',
+    description='Import parltrack into django-representatives',
     author='Arnaud Fabre',
     author_email='webmaster@memopol.org',
     url='http://github.com/political-memory/compotista-import_parltrack',
