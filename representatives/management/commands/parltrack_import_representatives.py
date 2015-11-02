@@ -418,3 +418,14 @@ class ParltrackImporter(FileImporter):
                 kind='facebook',
                 url=mep_json.get('Facebook')[0]
             )
+
+
+class Command(BaseCommand):
+    help = "Update the eurodeputies data by pulling it from parltrack"
+
+    def add_arguments(self, parser):
+        parser.add_argument('--celery', action='store_true', default=False)
+
+    def handle(self, *args, **options):
+        importer = ParltrackImporter()
+        importer.process()
