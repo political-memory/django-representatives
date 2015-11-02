@@ -1,4 +1,6 @@
 sudo: false
+env:
+  - DEBUG=True
 language: python
 python:
   - "2.7"
