@@ -5,8 +5,8 @@ python:
 install:
   - pip install django
   - pip install -e .
-  - wget https://github.com/political-memory/political_memory/archive/master.tar.gz
-  - tar xvzf master.tar.gz
+  - wget https://github.com/political-memory/political_memory/archive/openshift.tar.gz
+  - tar xvzf openshift.tar.gz
 script:
-  - political_memory-master/manage.py migrate
-  - political_memory-master/manage.py import_parltrack_representatives
+  - political_memory-openshift/manage.py migrate
+  - political_memory-openshift/manage.py parltrack_import_representatives
