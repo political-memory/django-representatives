@@ -7,6 +7,7 @@ import hashlib
 from tempfile import gettempdir
 from urllib import urlopen, urlretrieve
 
+from django.core.management.base import BaseCommand
 from django.template.defaultfilters import slugify
 from django.utils import timezone
 
