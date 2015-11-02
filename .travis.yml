@@ -9,6 +9,7 @@ install:
   - pip install -e .
   - wget https://github.com/political-memory/political_memory/archive/openshift.tar.gz
   - tar xvzf openshift.tar.gz
+  - pip install -r political_memory-openshift/requirements.txt
 script:
   - political_memory-openshift/manage.py migrate
   - political_memory-openshift/manage.py parltrack_import_representatives
