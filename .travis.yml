@@ -7,3 +7,4 @@ install:
   - pip install -e .
 script:
   - test_project/manage.py migrate
+  - test_project/manage.py import_representatives_from_compotista
