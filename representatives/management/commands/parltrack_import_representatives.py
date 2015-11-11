@@ -171,6 +171,8 @@ class ParltrackImporter(FileImporter):
         '''
         remote_id = mep_json['UserID']
 
+        if not remote_id:
+            return
 
         try:
             representative = Representative.objects.get(remote_id=remote_id)
