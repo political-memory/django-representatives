@@ -7,6 +7,7 @@ import hashlib
 from tempfile import gettempdir
 from urllib import urlopen, urlretrieve
 
+import django.dispatch
 from django.core.management.base import BaseCommand
 from django.template.defaultfilters import slugify
 from django.utils import timezone
@@ -21,7 +22,7 @@ from representatives.models import (Representative, Group,
 
 _parse_date = lambda date: datetime.strptime(date, "%Y-%m-%dT00:%H:00").date()
 
-logger = logging.getLogger('compotista.importers.' + __name__)
+logger = logging.getLogger(__name__)
 
 class GenericImporter(object):
     """
@@ -113,6 +114,13 @@ class FileImporter(GenericImporter):
 class ParltrackImporter(FileImporter):
     url = 'http://parltrack.euwiki.org/dumps/ep_meps_current.json.xz'
     check_etag = True
+    representative_pre_save = django.dispatch.Signal(
+        providing_args=['representative', 'data'])
+    representative_post_save = django.dispatch.Signal(
+        providing_args=['representative', 'data'])
+
+    def __init__(self):
+        self.cache = {}
 
     def _travis(self):
         """ Avoid being killed after 10 minutes without output """
@@ -146,10 +154,15 @@ class ParltrackImporter(FileImporter):
         '''
         logger.info('start processing representatives')
         with open(self.downloaded_file, 'r') as json_data_file:
-            for i,mep in enumerate(ijson.items(json_data_file, 'item')):
-                self._travis()
-                logger.info(u'{}. Processing representative {}'.format(i, mep['UserID']))
+            for mep in ijson.items(json_data_file, 'item'):
+                logger.info(u'Processing representative #%s: %s',
+                        mep['UserID'], mep['Name']['full'])
+
+                self.mep_cache = dict(staff=[], constituencies=[],
+                        committees=[], groups=[], delegations=[])
                 self.manage_mep(mep)
+
+                self._travis()
 
     def manage_mep(self, mep_json):
         '''
@@ -157,15 +170,27 @@ class ParltrackImporter(FileImporter):
         parltrack
         '''
         remote_id = mep_json['UserID']
-        representative, _ = Representative.objects.get_or_create(remote_id=remote_id)
+
+
+        try:
+            representative = Representative.objects.get(remote_id=remote_id)
+        except Representative.DoesNotExist:
+            representative = Representative(remote_id=remote_id)
+
         # Save representative attributes
         self.save_representative_details(representative, mep_json)
-        # Add Mandates
+        self.representative_pre_save.send(sender=self,
+                representative=representative, data=mep_json)
+
         self.add_mandates(representative, mep_json)
-        # Add Contacts
+
         self.add_contacts(representative, mep_json)
 
         representative.save()
+
+        self.representative_post_save.send(sender=self,
+                representative=representative, data=mep_json)
+
         return representative
 
     def save_representative_details(self, representative, mep_json):
@@ -237,7 +262,9 @@ class ParltrackImporter(FileImporter):
 
 
     def add_mandates(self, representative, mep_json):
-        def get_or_create_mandate(mandate_data, representative, group, constituency):
+        def get_or_create_mandate(mandate_data, representative, group,
+                constituency):
+
             if mandate_data.get("start"):
                 begin_date = _parse_date(mandate_data.get("start"))
             if mandate_data.get("end"):
@@ -252,7 +279,7 @@ class ParltrackImporter(FileImporter):
                 begin_date=begin_date,
                 end_date=end_date
             )
-            mandate.save()
+            return mandate
 
         # Committee
         for mandate_data in mep_json.get('Committees', []):
@@ -267,7 +294,10 @@ class ParltrackImporter(FileImporter):
                     name='European Parliament'
                 )
 
-                get_or_create_mandate(mandate_data, representative, group, constituency)
+                self.mep_cache['committees'].append(
+                    get_or_create_mandate(mandate_data, representative,
+                        group, constituency)
+                )
 
         # Delegations
         for mandate_data in mep_json.get('Delegations', []):
@@ -280,7 +310,10 @@ class ParltrackImporter(FileImporter):
                 name='European Parliament'
             )
 
-            get_or_create_mandate(mandate_data, representative, group, constituency)
+            self.mep_cache['delegations'].append(
+                get_or_create_mandate(mandate_data, representative, group,
+                    constituency)
+            )
 
         # Group
         convert = {"S&D": "SD", "NA": "NI", "ID": "IND/DEM", "PPE": "EPP", "Verts/ALE": "Greens/EFA"}
@@ -304,7 +337,10 @@ class ParltrackImporter(FileImporter):
                 name='European Parliament'
             )
 
-            get_or_create_mandate(mandate_data, representative, group, constituency)
+            self.mep_cache['groups'].append(
+                get_or_create_mandate(mandate_data, representative, group,
+                    constituency)
+            )
 
         # Countries
         for mandate_data in mep_json.get('Constituencies', []):
@@ -324,7 +360,10 @@ class ParltrackImporter(FileImporter):
                 name=local_party
             )
 
-            get_or_create_mandate(mandate_data, representative, group, constituency)
+            self.mep_cache['constituencies'].append(
+                get_or_create_mandate(mandate_data, representative, group,
+                    constituency)
+            )
 
         # Organisations
         for mandate_data in mep_json.get('Staff', []):
@@ -339,7 +378,10 @@ class ParltrackImporter(FileImporter):
                 name='European Parliament'
             )
 
-            get_or_create_mandate(mandate_data, representative, group, constituency)
+            self.mep_cache['staff'].append(
+                get_or_create_mandate(mandate_data, representative, group,
+                    constituency)
+            )
 
     def add_contacts(self, representative, mep_json):
         # Addresses
