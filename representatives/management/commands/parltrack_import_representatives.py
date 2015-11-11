@@ -203,7 +203,7 @@ class ParltrackImporter(FileImporter):
 
         representative.first_name = mep_json["Name"]["sur"]
         representative.last_name = mep_json["Name"]["family"]
-        representative.full_name = "%s %s" % (mep_json["Name"]["sur"], mep_json["Name"]["family"])
+        representative.full_name = mep_json["Name"]["full"]
 
         representative.photo = mep_json["Photo"]
 
