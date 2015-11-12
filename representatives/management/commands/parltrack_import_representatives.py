@@ -184,11 +184,11 @@ class ParltrackImporter(FileImporter):
         self.representative_pre_save.send(sender=self,
                 representative=representative, data=mep_json)
 
+        representative.save()
+
         self.add_mandates(representative, mep_json)
 
         self.add_contacts(representative, mep_json)
-
-        representative.save()
 
         self.representative_post_save.send(sender=self,
                 representative=representative, data=mep_json)
