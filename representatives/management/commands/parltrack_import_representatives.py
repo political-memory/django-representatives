@@ -480,7 +480,7 @@ class Command(BaseCommand):
         importer.process()
 
 
-if __name__ == '__main__':
+def main():
     import django
     django.setup()
 

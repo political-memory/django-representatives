@@ -24,6 +24,11 @@ setup(
     tests_require=[
         'django',
     ],
+    entry_points={
+        'console_scripts': [
+            'parltrack_import_representatives = representatives.management.commands.parltrack_import_representatives:main',
+        ]
+    },
     classifiers=[
         'Development Status :: 1 - Alpha/Planning',
         'Environment :: Web Environment',
