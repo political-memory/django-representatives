@@ -13,28 +13,15 @@ install:
 - pip install -r political_memory-openshift/requirements.txt
 script:
 - political_memory-openshift/manage.py migrate
-#commented temporarely to speed up artifact release test
-#- political_memory-openshift/manage.py parltrack_import_representatives
+- political_memory-openshift/manage.py parltrack_import_representatives
 before_deploy:
 - political_memory-openshift/manage.py dumpdata -o django-representatives-data.json representatives
-- git checkout $TRAVIS_BRANCH
-- git config --global user.email "travis@localhost.localdomain"
-- git config --global user.name "Travis CI"
-- git fetch --tags
-- git add --all
-- git commit -am "Travis change"
-- export GIT_TAG=${TRAVIS_BRANCH}-v0.1.$TRAVIS_BUILD_NUMBER
-- git tag -f $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
 deploy:
-  skip_cleanup: true
   provider: releases
+  skip_cleanup: true
   api_key:
     secure: g9RSaruNWpSdh8UYX4H9Q92m/tjU3Ly7TqU3e86cbEpPvNdrsT69DqauRhhaEjvrtj2opFrIwiQrOXDr0P4OTQg7ba3TchthFqNBccq7Ns0lBHKcIzjtu/sshRi/AQIKCSxYbw1+tKm6gQTO4NYaQ320g1QUkbalQlakxPm8ng8=
   file: django-representatives-data.json
   on:
-    repo: political-memory/django-representatives
+    tags: true
     all_branches: true
-
-branches:
-  except:
-    - /^.*-v0.1.*/
