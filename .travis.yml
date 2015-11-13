@@ -22,7 +22,7 @@ before_deploy:
 - git fetch --tags
 - git add --all
 - git commit -am "Travis change"
-- export GIT_TAG=${TRAVIS_BRANCH}_build
+- export GIT_TAG=${TRAVIS_BRANCH}-v0.1.$TRAVIS_BUILD_NUMBER
 - git tag -f $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
 deploy:
   skip_cleanup: true
@@ -37,4 +37,4 @@ deploy:
 
 branches:
   except:
-    - /^*_build/
+      - /^*-v0.1./
