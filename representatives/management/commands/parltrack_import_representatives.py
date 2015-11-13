@@ -84,9 +84,8 @@ class FileImporter(GenericImporter):
 
     def download_file(self):
         url_hash = hashlib.sha1(self.url).hexdigest()
-        tmp = getattr(settings, 'DATA_DIR', gettempdir())
-        destination = os.path.join(tmp, url_hash)
-        etag_location = os.path.join(tmp, url_hash + '.hash')
+        destination = os.path.join(settings.DATA_DIR, url_hash)
+        etag_location = os.path.join(settings.DATA_DIR, url_hash + '.hash')
         self.pre_download(destination)
 
         request = urlopen(self.url)
@@ -125,6 +124,9 @@ class ParltrackImporter(FileImporter):
     representative_post_save = django.dispatch.Signal(
         providing_args=['representative', 'data'])
 
+    def parse_date(self, date):
+        return _parse_date(date)
+
     def __init__(self):
         self.cache = {}
 
@@ -159,6 +161,7 @@ class ParltrackImporter(FileImporter):
         Main import method
         '''
         logger.info('start processing representatives')
+        i = 2
         with open(self.downloaded_file, 'r') as json_data_file:
             for mep in ijson.items(json_data_file, 'item'):
                 logger.info(u'Processing representative #%s: %s',
@@ -167,8 +170,10 @@ class ParltrackImporter(FileImporter):
                 self.mep_cache = dict(staff=[], constituencies=[],
                         committees=[], groups=[], delegations=[])
                 self.manage_mep(mep)
+                i += 1
 
                 self._travis()
+        print i
 
     @transaction.atomic
     def manage_mep(self, mep_json):
@@ -179,7 +184,7 @@ class ParltrackImporter(FileImporter):
         remote_id = mep_json['UserID']
 
         if not remote_id:
-            return
+            import ipdb; ipdb.set_trace()
 
         try:
             representative = Representative.objects.get(remote_id=remote_id)
@@ -288,6 +293,9 @@ class ParltrackImporter(FileImporter):
                 begin_date=begin_date,
                 end_date=end_date
             )
+
+            if _:
+                logger.info('Created mandate %s', mandate_data)
             return mandate
 
         # Committee
@@ -488,7 +496,6 @@ def main():
     django.setup()
 
     importer = ParltrackImporter()
-    importer.pre_import()
 
     i = 0
     for line in fileinput.input():
