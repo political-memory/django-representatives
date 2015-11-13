@@ -1,5 +1,6 @@
 # coding: utf-8
 
+import gc
 import fileinput
 import json
 import time
@@ -489,6 +490,7 @@ def main():
     importer = ParltrackImporter()
     importer.pre_import()
 
+    i = 0
     for line in fileinput.input():
         # Fix first line
         line = line.lstrip('[')
@@ -506,4 +508,9 @@ def main():
         importer.mep_cache = dict(staff=[], constituencies=[],
                 committees=[], groups=[], delegations=[])
         importer.manage_mep(mep)
+
+        i += 1
+        if i > 100:
+            gc.collect()
+            i = 0
     importer.post_import()
