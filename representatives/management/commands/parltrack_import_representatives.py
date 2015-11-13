@@ -13,6 +13,7 @@ import django.dispatch
 from django.conf import settings
 from django.core.management.base import BaseCommand
 from django.template.defaultfilters import slugify
+from django.db import transaction
 from django.utils import timezone
 
 import ijson
@@ -168,6 +169,7 @@ class ParltrackImporter(FileImporter):
 
                 self._travis()
 
+    @transaction.atomic
     def manage_mep(self, mep_json):
         '''
         Import a mep as a representative from the json dict fetched from
