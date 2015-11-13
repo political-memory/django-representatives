@@ -3,7 +3,7 @@ env:
   matrix:
   - DEBUG=True
   global:
-    secure: e1hG40qklhja8zBQs7io32pP9Ayj5IO8LFjtXeUO1PIaQlcVwmMh+6O9hghuKzuevihlGcD0RJiBmda4e+8o7bZt0rvYddVgvpfWj06AJjK9hEWDCbZkVen7hHHuP58GQEEPqF9xo4Vt7ZgVZSME2Fahjit7+IzrhSq26Nukpbg=
+    secure: ORe50qCMAwc6Hv7mQeYtZ2n7daVagvsQPkEXVNT2ATbSZZmqVqJZgx17/g4c9ZSaThJCNs/NQFTNw07T/Fb4Nj+wi+fxA6HbakpZAyPmY0xJmIWTZ9UVkbaZS2HtbYH+6vamTLVP0ymc8neS5izvFibykDcsgQe//rzenWddtxs=
 language: python
 python:
 - '2.7'
