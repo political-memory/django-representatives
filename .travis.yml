@@ -1,15 +1,27 @@
 sudo: false
 env:
+  matrix:
   - DEBUG=True
+  global:
+    secure: e1hG40qklhja8zBQs7io32pP9Ayj5IO8LFjtXeUO1PIaQlcVwmMh+6O9hghuKzuevihlGcD0RJiBmda4e+8o7bZt0rvYddVgvpfWj06AJjK9hEWDCbZkVen7hHHuP58GQEEPqF9xo4Vt7ZgVZSME2Fahjit7+IzrhSq26Nukpbg=
 language: python
 python:
-  - "2.7"
+- '2.7'
 install:
-  - pip install django
-  - pip install -e .
-  - wget https://github.com/political-memory/political_memory/archive/openshift.tar.gz
-  - tar xvzf openshift.tar.gz
-  - pip install -r political_memory-openshift/requirements.txt
+- pip install django
+- pip install -e .
+- wget https://github.com/political-memory/political_memory/archive/openshift.tar.gz
+- tar xvzf openshift.tar.gz
+- pip install -r political_memory-openshift/requirements.txt
 script:
-  - political_memory-openshift/manage.py migrate
-  - political_memory-openshift/manage.py parltrack_import_representatives
+- political_memory-openshift/manage.py migrate
+- political_memory-openshift/manage.py parltrack_import_representatives
+- political_memory-openshift/manage.py dumpdata -o django-representatives-data.json representatives
+deploy:
+  provider: releases
+  api_key:
+    secure: g9RSaruNWpSdh8UYX4H9Q92m/tjU3Ly7TqU3e86cbEpPvNdrsT69DqauRhhaEjvrtj2opFrIwiQrOXDr0P4OTQg7ba3TchthFqNBccq7Ns0lBHKcIzjtu/sshRi/AQIKCSxYbw1+tKm6gQTO4NYaQ320g1QUkbalQlakxPm8ng8=
+  file: django-representatives-data.json
+  on:
+    repo: political-memory/django-representatives
+    branch: parltrack_in_representatives
