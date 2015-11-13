@@ -25,7 +25,7 @@ before_deploy:
 - git add --all
 - git commit -am "Travis change"
 - export GIT_TAG=${TRAVIS_BRANCH}_build
-- git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
+- git tag -f $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
 - git push -f https://memopol-ci:$GITHUB_TOKEN@github.com/political-memory/political_memory.git $GIT_TAG
 deploy:
   skip_cleanup: true
