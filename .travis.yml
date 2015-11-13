@@ -15,7 +15,8 @@ install:
 - pip install -r political_memory-openshift/requirements.txt
 script:
 - political_memory-openshift/manage.py migrate
-- political_memory-openshift/manage.py parltrack_import_representatives
+#commented temporarely to speed up artifact release test
+#- political_memory-openshift/manage.py parltrack_import_representatives
 before_deploy:
 - political_memory-openshift/manage.py dumpdata -o django-representatives-data.json representatives
 - git config --global user.email "travis@localhost.localdomain"
