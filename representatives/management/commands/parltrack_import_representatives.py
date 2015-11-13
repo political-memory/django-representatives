@@ -1,5 +1,7 @@
 # coding: utf-8
 
+import fileinput
+import json
 import time
 import os
 import logging
@@ -476,3 +478,30 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         importer = ParltrackImporter()
         importer.process()
+
+
+if __name__ == '__main__':
+    import django
+    django.setup()
+
+    importer = ParltrackImporter()
+    importer.pre_import()
+
+    for line in fileinput.input():
+        # Fix first line
+        line = line.lstrip('[')
+        # Fix last line
+        line = line.rstrip(']')
+        # Skip inter-line
+        if line.strip() == ',':
+            continue
+
+        mep = json.loads(line)
+
+        logger.info(u'Processing representative #%s: %s',
+                mep['UserID'], mep['Name']['full'])
+
+        importer.mep_cache = dict(staff=[], constituencies=[],
+                committees=[], groups=[], delegations=[])
+        importer.manage_mep(mep)
+    importer.post_import()
