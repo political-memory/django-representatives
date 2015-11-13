@@ -14,6 +14,8 @@ install:
 script:
 - political_memory-openshift/manage.py migrate
 - political_memory-openshift/manage.py parltrack_import_representatives
+- wget http://parltrack.euwiki.org/dumps/ep_meps_current.json.xz
+- DJANGO_SETTINGS_MODULE=memopol.settings DEBUG=1 unxz -c ep_meps_current.json.xz | parltrack_import_representatives
 before_deploy:
 - political_memory-openshift/manage.py dumpdata -o django-representatives-data.json representatives
 deploy:
