@@ -16,15 +16,17 @@ install:
 script:
 - political_memory-openshift/manage.py migrate
 - political_memory-openshift/manage.py parltrack_import_representatives
-after_success:
+before_deploy:
 - political_memory-openshift/manage.py dumpdata -o django-representatives-data.json representatives
 - git config --global user.email "travis@localhost.localdomain"
 - git config --global user.name "Travis CI"
-- git checkout -b ${TRAVIS_BRANCH}_build ${TRAVIS_COMMIT}
 - git add --all
 - git commit -am "Travis change"
-- git tag -f ${TRAVIS_BRANCH}_build
+- export GIT_TAG=${TRAVIS_BRANCH}_build
+- git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
+- git push -f https://memopol-ci:$GITHUB_TOKEN@github.com/political-memory/political_memory.git $GIT_TAG
 deploy:
+  skip_cleanup: true
   provider: releases
   api_key:
     secure: g9RSaruNWpSdh8UYX4H9Q92m/tjU3Ly7TqU3e86cbEpPvNdrsT69DqauRhhaEjvrtj2opFrIwiQrOXDr0P4OTQg7ba3TchthFqNBccq7Ns0lBHKcIzjtu/sshRi/AQIKCSxYbw1+tKm6gQTO4NYaQ320g1QUkbalQlakxPm8ng8=
@@ -32,3 +34,8 @@ deploy:
   on:
     repo: political-memory/django-representatives
     all_branches: true
+    tags: false
+
+branches:
+  except:
+    - /^*_build/
