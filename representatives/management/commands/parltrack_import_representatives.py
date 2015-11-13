@@ -184,7 +184,9 @@ class ParltrackImporter(FileImporter):
         remote_id = mep_json['UserID']
 
         if not remote_id:
-            import ipdb; ipdb.set_trace()
+            logger.warning('Skipping MEP without UID %s %s',
+                    mep_json['Name']['full'], mep_json['UserID'])
+            return
 
         try:
             representative = Representative.objects.get(remote_id=remote_id)
@@ -295,7 +297,8 @@ class ParltrackImporter(FileImporter):
             )
 
             if _:
-                logger.info('Created mandate %s', mandate_data)
+                logger.info('Created mandate %s with %s', mandate.pk,
+                        mandate_data)
             return mandate
 
         # Committee
