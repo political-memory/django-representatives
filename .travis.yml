@@ -33,7 +33,6 @@ deploy:
   on:
     repo: political-memory/django-representatives
     all_branches: true
-    tags: false
 
 branches:
   except:
