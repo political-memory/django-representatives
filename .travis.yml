@@ -17,6 +17,7 @@ script:
 #- political_memory-openshift/manage.py parltrack_import_representatives
 before_deploy:
 - political_memory-openshift/manage.py dumpdata -o django-representatives-data.json representatives
+- git checkout $TRAVIS_BRANCH
 - git config --global user.email "travis@localhost.localdomain"
 - git config --global user.name "Travis CI"
 - git fetch --tags
