@@ -8,6 +8,7 @@ from tempfile import gettempdir
 from urllib import urlopen, urlretrieve
 
 import django.dispatch
+from django.conf import settings
 from django.core.management.base import BaseCommand
 from django.template.defaultfilters import slugify
 from django.utils import timezone
@@ -79,8 +80,9 @@ class FileImporter(GenericImporter):
 
     def download_file(self):
         url_hash = hashlib.sha1(self.url).hexdigest()
-        destination = os.path.join(gettempdir(), url_hash)
-        etag_location = os.path.join(gettempdir(), url_hash + '.hash')
+        tmp = getattr(settings, 'DATA_DIR', gettempdir())
+        destination = os.path.join(tmp, url_hash)
+        etag_location = os.path.join(tmp, url_hash + '.hash')
         self.pre_download(destination)
 
         request = urlopen(self.url)
