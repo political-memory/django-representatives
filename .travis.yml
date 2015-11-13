@@ -21,6 +21,7 @@ before_deploy:
 - political_memory-openshift/manage.py dumpdata -o django-representatives-data.json representatives
 - git config --global user.email "travis@localhost.localdomain"
 - git config --global user.name "Travis CI"
+- get fetch --tags
 - git add --all
 - git commit -am "Travis change"
 - export GIT_TAG=${TRAVIS_BRANCH}_build
