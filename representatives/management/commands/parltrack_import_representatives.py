@@ -496,6 +496,7 @@ def main():
     django.setup()
 
     importer = ParltrackImporter()
+    GenericImporter.pre_import(importer)
 
     i = 0
     for line in fileinput.input():
