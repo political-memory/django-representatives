@@ -23,5 +23,6 @@ deploy:
     secure: g9RSaruNWpSdh8UYX4H9Q92m/tjU3Ly7TqU3e86cbEpPvNdrsT69DqauRhhaEjvrtj2opFrIwiQrOXDr0P4OTQg7ba3TchthFqNBccq7Ns0lBHKcIzjtu/sshRi/AQIKCSxYbw1+tKm6gQTO4NYaQ320g1QUkbalQlakxPm8ng8=
   file: django-representatives-data.json
   on:
+    tags: true
     repo: political-memory/django-representatives
-    branch: parltrack_in_representatives
+    all_branches: true
