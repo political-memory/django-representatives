@@ -2,6 +2,7 @@ sudo: false
 env:
   matrix:
   - DEBUG=True
+  - DJANGO_SETTINGS_MODULE=representatives.tests.settings
 language: python
 python:
 - '2.7'
@@ -12,12 +13,10 @@ install:
 - tar xvzf openshift.tar.gz
 - pip install -r political_memory-openshift/requirements.txt
 script:
-- political_memory-openshift/manage.py migrate
-- political_memory-openshift/manage.py parltrack_import_representatives
-- wget http://parltrack.euwiki.org/dumps/ep_meps_current.json.xz
-- DJANGO_SETTINGS_MODULE=memopol.settings DEBUG=1 unxz -c ep_meps_current.json.xz | parltrack_import_representatives
+- django-admin migrate
+- django-admin parltrack_import_representatives
 before_deploy:
-- political_memory-openshift/manage.py dumpdata -o django-representatives-data.json representatives
+- django-admin dumpdata -o django-representatives-data.json representatives
 deploy:
   provider: releases
   skip_cleanup: true
@@ -25,5 +24,5 @@ deploy:
     secure: g9RSaruNWpSdh8UYX4H9Q92m/tjU3Ly7TqU3e86cbEpPvNdrsT69DqauRhhaEjvrtj2opFrIwiQrOXDr0P4OTQg7ba3TchthFqNBccq7Ns0lBHKcIzjtu/sshRi/AQIKCSxYbw1+tKm6gQTO4NYaQ320g1QUkbalQlakxPm8ng8=
   file: django-representatives-data.json
   on:
-    tags: true
+    tags: false
     all_branches: true
