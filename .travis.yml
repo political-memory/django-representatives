@@ -1,8 +1,7 @@
 sudo: false
 env:
   matrix:
-  - DEBUG=True
-  - DJANGO_SETTINGS_MODULE=representatives.tests.settings
+  - DEBUG=True DJANGO_SETTINGS_MODULE=representatives.tests.settings
 language: python
 python:
 - '2.7'
