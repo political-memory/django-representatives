@@ -13,7 +13,8 @@ install:
 - pip install -r political_memory-openshift/requirements.txt
 script:
 - django-admin migrate
-- django-admin parltrack_import_representatives
+# shortcut to test release deployment
+#- django-admin parltrack_import_representatives
 before_deploy:
 - django-admin dumpdata -o django-representatives-data.json representatives
 deploy:
