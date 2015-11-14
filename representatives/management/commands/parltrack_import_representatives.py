@@ -84,8 +84,9 @@ class FileImporter(GenericImporter):
 
     def download_file(self):
         url_hash = hashlib.sha1(self.url).hexdigest()
-        destination = os.path.join(settings.DATA_DIR, url_hash)
-        etag_location = os.path.join(settings.DATA_DIR, url_hash + '.hash')
+        tmp = getattr(settings, 'REPRESENTATIVES_DATA_DIR', gettempdir())
+        destination = os.path.join(tmp, url_hash)
+        etag_location = '%s.hash' % destination
         self.pre_download(destination)
 
         request = urlopen(self.url)
