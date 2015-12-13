@@ -91,8 +91,14 @@ class ParltrackImporter(GenericImporter):
 
         self.add_contacts(representative, mep_json)
 
+        # if you have memopol installed, this hook will trigger
+        # the legislature.models.mempol_representative to synchronize with
+        # legislature.models subclasses. If you choose a one-to-one relation
+        # instead then good for you, you made a wise decision and this won't do
+        # anything !
         representative_post_save.send(
             sender=self, representative=representative, data=mep_json)
+
         logger.debug('Imported MEP %s', unicode(representative))
 
         return representative
