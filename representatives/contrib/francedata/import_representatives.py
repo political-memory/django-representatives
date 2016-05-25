@@ -9,6 +9,7 @@ import ijson
 import django
 from django.apps import apps
 from django.db import transaction
+from django.db import DatabaseError
 from django.utils import timezone
 
 from representatives.models import (Country, Mandate, Email, Address, WebSite,
@@ -43,21 +44,6 @@ def _parse_date(date):
     return datetime.strptime(date, "%Y-%m-%d").date()
 
 
-def _create_mandate(representative, group, constituency, role='',
-                    begin_date=None, end_date=None):
-    mandate, _ = Mandate.objects.get_or_create(
-        representative=representative,
-        group=group,
-        constituency=constituency,
-        role=role,
-        begin_date=begin_date,
-        end_date=end_date
-    )
-
-    if _:
-        logger.debug('Created mandate %s', mandate.pk)
-
-
 def _get_path(dict_, path):
     '''
     Get value at specific path in dictionary. Path is specified by slash-
@@ -80,12 +66,25 @@ class GenericImporter(object):
         it saves the given model if it exists, updating its
         updated field
         '''
-
-        instance, created = model.objects.get_or_create(**data)
+        model_name = model._meta.verbose_name
+        data_string = repr(data).decode('utf8')
+        logger.debug('Saving %s with %s' % (model_name, data_string))
+        try:
+            with transaction.atomic():
+                instance, created = model.objects.get_or_create(**data)
+        except DatabaseError as e:
+            logger.error('Saving %s failed: %s' % (model_name, e))
+            return False, False
 
         if not created:
             if instance.updated < self.import_start_datetime:
-                instance.save()     # Updates updated field
+                logger.debug('Updating %s with %s' % (model_name, data_string))
+                try:
+                    with transaction.atomic():
+                        instance.save()
+                except DatabaseError as e:
+                    logger.error('Saving %s failed: %s' % (model_name, e))
+                    return False, False
 
         return (instance, created)
 
@@ -180,15 +179,18 @@ class FranceDataImporter(GenericImporter):
 
         # Mandate in country group for party constituency
         if rep_json.get('parti_ratt_financier'):
-            constituency, _ = Constituency.objects.get_or_create(
-                name=rep_json.get('parti_ratt_financier'), country=self.france)
+            constituency, _ = self.touch_model(
+                model=Constituency,
+                name=rep_json.get('parti_ratt_financier'),
+                country=self.france
+            )
 
             group, _ = self.touch_model(model=Group,
                                         abbreviation=self.france.code,
                                         kind='country',
                                         name=self.france.name)
 
-            _create_mandate(representative, group, constituency, 'membre')
+            self._create_mandate(representative, group, constituency, 'membre')
 
         # Configurable mandates
         for mdef in self.variant['mandates']:
@@ -212,6 +214,9 @@ class FranceDataImporter(GenericImporter):
                                             chamber=chamber,
                                             name=name)
 
+                if group is False:
+                    continue
+
                 role = _get_mdef_item(mdef, 'role', elem, 'membre')
                 start = _get_mdef_item(mdef, 'start', elem, None)
                 if start is not None:
@@ -220,8 +225,8 @@ class FranceDataImporter(GenericImporter):
                 if end is not None:
                     end = _parse_date(end)
 
-                _create_mandate(representative, group, self.ch_constituency,
-                                role, start, end)
+                self._create_mandate(representative, group,
+                        self.ch_constituency, role, start, end)
 
                 logger.debug(
                     '%s => %s: %s of "%s" (%s) %s-%s' % (rep_json['slug'],
@@ -299,6 +304,18 @@ class FranceDataImporter(GenericImporter):
                                  representative=representative,
                                  kind='', number=item['tel']
                                  )
+
+    def _create_mandate(self, representative, group, constituency, role='',
+                        begin_date=None, end_date=None):
+        mandate, _ = self.touch_model(
+            model=Mandate,
+            representative=representative,
+            group=group,
+            constituency=constituency,
+            role=role,
+            begin_date=begin_date,
+            end_date=end_date
+        )
 
 
 def main(stream=None):
