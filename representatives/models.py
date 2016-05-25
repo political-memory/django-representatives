@@ -219,7 +219,7 @@ class Constituency(HashableModel, TimeStampedModel):
     country = models.ForeignKey('Country', null=True, blank=True,
         related_name='constituencies')
 
-    hashable_fields = ['name']
+    hashable_fields = ['name', 'country']
 
     @cached_property
     def active(self):
