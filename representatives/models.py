@@ -175,6 +175,11 @@ class Chamber(HashableModel):
 
     hashable_fields = ['name', 'country', 'abbreviation']
 
+    class Meta:
+        unique_together = [
+            ['name', 'country', 'abbreviation']
+        ]
+
     def __unicode__(self):
         return u'{} [{}]'.format(self.name, self.abbreviation)
 
@@ -200,6 +205,9 @@ class Group(HashableModel, TimeStampedModel):
 
     class Meta:
         ordering = ('name',)
+        unique_together = [
+            ['name', 'abbreviation', 'kind', 'chamber']
+        ]
 
     def get_absolute_url(self):
         if self.chamber:
@@ -276,3 +284,9 @@ class Mandate(HashableModel, TimeStampedModel):
 
     class Meta:
         ordering = ('-end_date',)
+        unique_together = [
+            [
+                'group', 'constituency', 'role', 'begin_date',
+                'end_date', 'representative'
+            ]
+        ]
