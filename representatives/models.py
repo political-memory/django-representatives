@@ -248,7 +248,7 @@ class Mandate(HashableModel, TimeStampedModel):
         Constituency, null=True, related_name='mandates')
     representative = models.ForeignKey(Representative, related_name='mandates')
     role = models.CharField(
-        max_length=25,
+        max_length=255,
         blank=True,
         default='',
         help_text="Eg.: president of a political group"
