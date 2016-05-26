@@ -10,7 +10,6 @@ install:
 - pip install $DJANGO pep8 flake8 pytest-django pytest-cov codecov django-responsediff
 - pip install -e .[api]
 script:
-- pep8 representatives/ --exclude migrations --ignore E128
 - flake8 representatives/ --exclude migrations --ignore E128
 - django-admin migrate
 - cat representatives/contrib/francedata/tests/representatives_input.json | francedata_import_representatives
