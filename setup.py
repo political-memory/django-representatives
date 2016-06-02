@@ -19,7 +19,14 @@ setup(
         'api': [
             'django-filter',
             'djangorestframework',
-        ]
+        ],
+        'test': [
+            'pytest',
+            'pytest-django',
+            'pytest-cov',
+            'django-responsediff==0.6.0',
+            'django-dbdiff==0.7.0',
+        ],
     },
     entry_points={
         'console_scripts': [

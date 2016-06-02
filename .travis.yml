@@ -1,20 +1,14 @@
 sudo: false
 language: python
 env:
-- DJANGO="django>1.8,<1.9" DJANGO_SETTINGS_MODULE=representatives.tests.settings
+  matrix:
+  - TOXENV=py27-dj18
+  - TOXENV=qa
 python:
 - "2.7"
-before_install:
-- pip install codecov
 install:
-- pip install $DJANGO pep8 flake8 pytest-django pytest-cov codecov django-responsediff
-- pip install -e .[api]
+- pip install tox codecov
 script:
-- pep8 representatives/ --exclude migrations --ignore E128
-- flake8 representatives/ --exclude migrations --ignore E128
-- django-admin migrate
-- cat representatives/contrib/francedata/tests/representatives_input.json | francedata_import_representatives
-- cat representatives/contrib/parltrack/tests/representatives_fixture.json | parltrack_import_representatives
-- py.test
+- tox
 after_success:
 - codecov

@@ -1,0 +1,6 @@
+{
+    "constituencies": "http://testserver/api/constituencies/",
+    "groups": "http://testserver/api/groups/",
+    "mandates": "http://testserver/api/mandates/",
+    "representatives": "http://testserver/api/representatives/"
+}

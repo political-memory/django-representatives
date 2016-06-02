@@ -1,0 +1,268 @@
+{
+    "id": 2,
+    "slug": "olle-ludvigsson",
+    "remote_id": "96673",
+    "first_name": "Olle",
+    "last_name": "LUDVIGSSON",
+    "full_name": "Olle LUDVIGSSON",
+    "gender": 2,
+    "birth_place": "Hälsö",
+    "birth_date": "1948-10-28",
+    "photo": "http://www.europarl.europa.eu/mepphoto/96673.jpg",
+    "active": true,
+    "cv": "",
+    "contacts": {
+        "emails": [
+            {
+                "email": "olle.ludvigsson@europarl.europa.eu",
+                "kind": "official"
+            }
+        ],
+        "phones": [
+            {
+                "number": "+333 88 1 75442",
+                "kind": "office phone"
+            },
+            {
+                "number": "+322 28 45442",
+                "kind": "office phone"
+            }
+        ],
+        "websites": [
+            {
+                "url": "https://www.facebook.com/olle.ludvigsson",
+                "kind": "facebook"
+            },
+            {
+                "url": "http://twitter.com/olleludvigsson",
+                "kind": "twitter"
+            },
+            {
+                "url": "http://www.sap.se/olle",
+                "kind": ""
+            }
+        ],
+        "address": [
+            {
+                "country": {
+                    "name": "Belgium",
+                    "code": "BE"
+                },
+                "city": "Brussels",
+                "street": "rue Wiertz / Wiertzstraat",
+                "number": "60",
+                "postcode": "1047",
+                "floor": "14G",
+                "office_number": "257",
+                "kind": "official"
+            },
+            {
+                "country": {
+                    "name": "France",
+                    "code": "FR"
+                },
+                "city": "Strasbourg",
+                "street": "Av. du Président Robert Schuman - CS 91024",
+                "number": "1",
+                "postcode": "67070",
+                "floor": "T07",
+                "office_number": "070",
+                "kind": "official"
+            }
+        ]
+    },
+    "fingerprint": "314d0f4c25af31bfa2a6b286838367994b902615",
+    "url": "http://testserver/api/representatives/2/",
+    "mandates": [
+        {
+            "id": 9,
+            "group": {
+                "id": 8,
+                "name": "Committee on Economic and Monetary Affairs",
+                "abbreviation": "ECON",
+                "kind": "committee",
+                "fingerprint": "2da973401cd76bb56b36f3a9162cda13d2f2d8f3"
+            },
+            "constituency": {
+                "id": 1,
+                "name": "European Parliament",
+                "fingerprint": "bc0c3668435accfa5da4479c80478fe68d15ddb1"
+            },
+            "role": "Member",
+            "begin_date": "2014-07-01",
+            "end_date": "9999-12-31",
+            "fingerprint": "5323fd311cf0cb24122be532666fabb7ef23fa0c"
+        },
+        {
+            "id": 17,
+            "group": {
+                "id": 14,
+                "name": "Sweden",
+                "abbreviation": "SE",
+                "kind": "country",
+                "fingerprint": "ea4cacc64af470d01e5b4da150b8b9d3a9dc4bfe"
+            },
+            "constituency": {
+                "id": 3,
+                "name": "Arbetarepartiet- Socialdemokraterna",
+                "fingerprint": "a8fa2ff595aedee63954c3b5ad6e1dcd5dfac910"
+            },
+            "role": "",
+            "begin_date": "2014-07-01",
+            "end_date": "9999-12-31",
+            "fingerprint": "6058eddb2a4542a23de70a2528993eba09b5817a"
+        },
+        {
+            "id": 15,
+            "group": {
+                "id": 13,
+                "name": "Group of the Progressive Alliance of Socialists and Democrats in the European Parliament",
+                "abbreviation": "SD",
+                "kind": "group",
+                "fingerprint": "729890eba3ce20f90808b32110871d1fe41b53b6"
+            },
+            "constituency": {
+                "id": 1,
+                "name": "European Parliament",
+                "fingerprint": "bc0c3668435accfa5da4479c80478fe68d15ddb1"
+            },
+            "role": "Member",
+            "begin_date": "2014-07-01",
+            "end_date": "9999-12-31",
+            "fingerprint": "f5c73825add38bb2c5f8de70d88b9effa6d6527f"
+        },
+        {
+            "id": 13,
+            "group": {
+                "id": 11,
+                "name": "Delegation for relations with Bosnia and Herzegovina, and Kosovo",
+                "abbreviation": "",
+                "kind": "delegation",
+                "fingerprint": "3d2d9370cc501b1208a4692baf69deeab1e65d0a"
+            },
+            "constituency": {
+                "id": 1,
+                "name": "European Parliament",
+                "fingerprint": "bc0c3668435accfa5da4479c80478fe68d15ddb1"
+            },
+            "role": "Substitute",
+            "begin_date": "2015-05-18",
+            "end_date": "9999-12-31",
+            "fingerprint": "b65a685d8e4144e36aff12b64bf6d835af1b95a5"
+        },
+        {
+            "id": 12,
+            "group": {
+                "id": 10,
+                "name": "Delegation to the EU-Serbia Stabilisation and Association Parliamentary Committee",
+                "abbreviation": "",
+                "kind": "delegation",
+                "fingerprint": "a24b4e184cf25f0e300c07a1402b65243f5ba93d"
+            },
+            "constituency": {
+                "id": 1,
+                "name": "European Parliament",
+                "fingerprint": "bc0c3668435accfa5da4479c80478fe68d15ddb1"
+            },
+            "role": "Member",
+            "begin_date": "2014-07-14",
+            "end_date": "9999-12-31",
+            "fingerprint": "20a93b100a172b29f9ec6c6f94a8faeb1754a075"
+        },
+        {
+            "id": 10,
+            "group": {
+                "id": 9,
+                "name": "Committee on Industry, Research and Energy",
+                "abbreviation": "ITRE",
+                "kind": "committee",
+                "fingerprint": "17ff1a9fe036e400612c9153c1647a8258c34d63"
+            },
+            "constituency": {
+                "id": 1,
+                "name": "European Parliament",
+                "fingerprint": "bc0c3668435accfa5da4479c80478fe68d15ddb1"
+            },
+            "role": "Substitute",
+            "begin_date": "2014-07-08",
+            "end_date": "9999-12-31",
+            "fingerprint": "9d57bd7941ddda428728446908f8dd7aa642c764"
+        },
+        {
+            "id": 16,
+            "group": {
+                "id": 13,
+                "name": "Group of the Progressive Alliance of Socialists and Democrats in the European Parliament",
+                "abbreviation": "SD",
+                "kind": "group",
+                "fingerprint": "729890eba3ce20f90808b32110871d1fe41b53b6"
+            },
+            "constituency": {
+                "id": 1,
+                "name": "European Parliament",
+                "fingerprint": "bc0c3668435accfa5da4479c80478fe68d15ddb1"
+            },
+            "role": "Member",
+            "begin_date": "2009-07-14",
+            "end_date": "2014-06-30",
+            "fingerprint": "5765a17282ede4b110bedd2af0b1e5cc87673e6e"
+        },
+        {
+            "id": 18,
+            "group": {
+                "id": 14,
+                "name": "Sweden",
+                "abbreviation": "SE",
+                "kind": "country",
+                "fingerprint": "ea4cacc64af470d01e5b4da150b8b9d3a9dc4bfe"
+            },
+            "constituency": {
+                "id": 3,
+                "name": "Arbetarepartiet- Socialdemokraterna",
+                "fingerprint": "a8fa2ff595aedee63954c3b5ad6e1dcd5dfac910"
+            },
+            "role": "",
+            "begin_date": "2009-07-14",
+            "end_date": "2014-06-30",
+            "fingerprint": "4d9c58327c6b94bdf8a01e5c4d1fbcf751abaf8f"
+        },
+        {
+            "id": 14,
+            "group": {
+                "id": 12,
+                "name": "Delegation for relations with Australia and New Zealand",
+                "abbreviation": "",
+                "kind": "delegation",
+                "fingerprint": "1e5d79317501c2fdf7f36846ad1d5491a244a103"
+            },
+            "constituency": {
+                "id": 1,
+                "name": "European Parliament",
+                "fingerprint": "bc0c3668435accfa5da4479c80478fe68d15ddb1"
+            },
+            "role": "Substitute",
+            "begin_date": "2009-09-17",
+            "end_date": "2013-01-10",
+            "fingerprint": "681dac891286446feb02863db19826f079cfed12"
+        },
+        {
+            "id": 11,
+            "group": {
+                "id": 8,
+                "name": "Committee on Economic and Monetary Affairs",
+                "abbreviation": "ECON",
+                "kind": "committee",
+                "fingerprint": "2da973401cd76bb56b36f3a9162cda13d2f2d8f3"
+            },
+            "constituency": {
+                "id": 1,
+                "name": "European Parliament",
+                "fingerprint": "bc0c3668435accfa5da4479c80478fe68d15ddb1"
+            },
+            "role": "Substitute",
+            "begin_date": "2009-07-16",
+            "end_date": "2012-01-18",
+            "fingerprint": "5953eb229dd3c0993c1af3654fa7dfc052614002"
+        }
+    ]
+}

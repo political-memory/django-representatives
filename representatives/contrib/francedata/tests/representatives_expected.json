@@ -1,129 +1,161 @@
 [
 {
     "fields": {
-        "photo": "http://www.nosdeputes.fr/depute/photo/bernard-roman",
-        "gender": 2,
-        "remote_id": "http://www2.assemblee-nationale.fr/deputes/fiche/OMC_PA2611",
-        "cv": "",
         "active": true,
-        "birth_place": "Lille (Nord)",
-        "full_name": "Bernard Roman",
         "birth_date": "1952-07-15",
-        "slug": "bernard-roman"
-    },
-    "model": "representatives.representative",
-    "pk": 1
-},
-{
-    "fields": {
-        "photo": "http://www.nossenateurs.fr/senateur/photo/david-assouline",
-        "gender": 2,
-        "remote_id": "http://www.senat.fr/senateur/assouline_david04059m.html",
+        "birth_place": "Lille (Nord)",
+        "created": "2016-06-03T00:48:09",
         "cv": "",
+        "fingerprint": "ff8b57cfa033bcdff8c48d13b4e4af0e4b70e2e7",
+        "first_name": "",
+        "full_name": "Bernard Roman",
+        "gender": 2,
+        "last_name": "",
+        "photo": "http://www.nosdeputes.fr/depute/photo/bernard-roman",
+        "remote_id": "http://www2.assemblee-nationale.fr/deputes/fiche/OMC_PA2611",
+        "slug": "bernard-roman",
+        "updated": "2016-06-03T00:48:09"
+    },
+    "model": "representatives.representative",
+    "pk": 1
+},
+{
+    "fields": {
         "active": true,
-        "birth_place": "non disponible",
-        "full_name": "David Assouline",
         "birth_date": "1959-06-16",
-        "slug": "david-assouline"
+        "birth_place": "non disponible",
+        "created": "2016-06-03T00:48:09",
+        "cv": "",
+        "fingerprint": "a092abb83ad1bf33d6271d279da8e336fa995bb7",
+        "first_name": "",
+        "full_name": "David Assouline",
+        "gender": 2,
+        "last_name": "",
+        "photo": "http://www.nossenateurs.fr/senateur/photo/david-assouline",
+        "remote_id": "http://www.senat.fr/senateur/assouline_david04059m.html",
+        "slug": "david-assouline",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.representative",
     "pk": 2
 },
 {
     "fields": {
+        "created": "2016-06-03T00:48:09",
         "email": "contact@bernard-roman.org",
+        "kind": "other",
         "representative": 1,
-        "kind": "other"
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.email",
     "pk": 1
 },
 {
     "fields": {
+        "created": "2016-06-03T00:48:09",
         "email": "broman@assemblee-nationale.fr",
+        "kind": "official",
         "representative": 1,
-        "kind": "official"
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.email",
     "pk": 2
 },
 {
     "fields": {
+        "created": "2016-06-03T00:48:09",
         "email": "d.assouline@senat.fr",
+        "kind": "official",
         "representative": 2,
-        "kind": "official"
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.email",
     "pk": 3
 },
 {
     "fields": {
-        "url": "http://www.bernard-roman.net",
+        "created": "2016-06-03T00:48:09",
+        "kind": "",
         "representative": 1,
-        "kind": ""
+        "updated": "2016-06-03T00:48:09",
+        "url": "http://www.bernard-roman.net"
     },
     "model": "representatives.website",
     "pk": 1
 },
 {
     "fields": {
-        "url": "https://twitter.com/bernardroman59",
+        "created": "2016-06-03T00:48:09",
+        "kind": "",
         "representative": 1,
-        "kind": ""
+        "updated": "2016-06-03T00:48:09",
+        "url": "https://twitter.com/bernardroman59"
     },
     "model": "representatives.website",
     "pk": 2
 },
 {
     "fields": {
-        "url": "http://twitter.com/bernardroman59",
+        "created": "2016-06-03T00:48:09",
+        "kind": "twitter",
         "representative": 1,
-        "kind": "twitter"
+        "updated": "2016-06-03T00:48:09",
+        "url": "http://twitter.com/bernardroman59"
     },
     "model": "representatives.website",
     "pk": 3
 },
 {
     "fields": {
-        "url": "http://www.david-assouline.net",
+        "created": "2016-06-03T00:48:09",
+        "kind": "",
         "representative": 2,
-        "kind": ""
+        "updated": "2016-06-03T00:48:09",
+        "url": "http://www.david-assouline.net"
     },
     "model": "representatives.website",
     "pk": 4
 },
 {
     "fields": {
-        "url": "https://twitter.com/dassouline",
+        "created": "2016-06-03T00:48:09",
+        "kind": "",
         "representative": 2,
-        "kind": ""
+        "updated": "2016-06-03T00:48:09",
+        "url": "https://twitter.com/dassouline"
     },
     "model": "representatives.website",
     "pk": 5
 },
 {
     "fields": {
-        "url": "https://www.facebook.com/DavAssouline",
+        "created": "2016-06-03T00:48:09",
+        "kind": "",
         "representative": 2,
-        "kind": ""
+        "updated": "2016-06-03T00:48:09",
+        "url": "https://www.facebook.com/DavAssouline"
     },
     "model": "representatives.website",
     "pk": 6
 },
 {
     "fields": {
-        "url": "http://david-assouline.net",
+        "created": "2016-06-03T00:48:09",
+        "kind": "",
         "representative": 2,
-        "kind": ""
+        "updated": "2016-06-03T00:48:09",
+        "url": "http://david-assouline.net"
     },
     "model": "representatives.website",
     "pk": 7
 },
 {
     "fields": {
-        "url": "http://twitter.com/dassouline",
+        "created": "2016-06-03T00:48:09",
+        "kind": "twitter",
         "representative": 2,
-        "kind": "twitter"
+        "updated": "2016-06-03T00:48:09",
+        "url": "http://twitter.com/dassouline"
     },
     "model": "representatives.website",
     "pk": 8
@@ -131,16 +163,18 @@
 {
     "fields": {
         "city": "Paris",
-        "name": "Assembl\u00e9e nationale",
         "country": 1095,
+        "created": "2016-06-03T00:48:09",
         "floor": "",
-        "number": "126",
-        "street": "Rue de l'Universit\u00e9",
-        "office_number": "",
-        "representative": 1,
-        "location": "",
         "kind": "official",
-        "postcode": "75355"
+        "location": "",
+        "name": "Assembl\u00e9e nationale",
+        "number": "126",
+        "office_number": "",
+        "postcode": "75355",
+        "representative": 1,
+        "street": "Rue de l'Universit\u00e9",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.address",
     "pk": 1
@@ -148,16 +182,18 @@
 {
     "fields": {
         "city": "Lille",
-        "name": "Permanence",
         "country": 1095,
+        "created": "2016-06-03T00:48:09",
         "floor": "",
-        "number": "20",
-        "street": "Rue d'Arras",
-        "office_number": "",
-        "representative": 1,
-        "location": "",
         "kind": "",
-        "postcode": "59000"
+        "location": "",
+        "name": "Permanence",
+        "number": "20",
+        "office_number": "",
+        "postcode": "59000",
+        "representative": 1,
+        "street": "Rue d'Arras",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.address",
     "pk": 2
@@ -165,16 +201,18 @@
 {
     "fields": {
         "city": "Lille",
-        "name": "",
         "country": 1095,
+        "created": "2016-06-03T00:48:09",
         "floor": "",
-        "number": "",
-        "street": "",
-        "office_number": "",
-        "representative": 1,
-        "location": "",
         "kind": "",
-        "postcode": "59000"
+        "location": "",
+        "name": "",
+        "number": "",
+        "office_number": "",
+        "postcode": "59000",
+        "representative": 1,
+        "street": "",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.address",
     "pk": 3
@@ -182,231 +220,269 @@
 {
     "fields": {
         "city": "Paris",
-        "name": "Palais du Luxembourg",
         "country": 1095,
+        "created": "2016-06-03T00:48:09",
         "floor": "",
-        "number": "15",
-        "street": "Rue de Vaugirard",
-        "office_number": "",
-        "representative": 2,
-        "location": "",
         "kind": "official",
-        "postcode": "75291"
+        "location": "",
+        "name": "Palais du Luxembourg",
+        "number": "15",
+        "office_number": "",
+        "postcode": "75291",
+        "representative": 2,
+        "street": "Rue de Vaugirard",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.address",
     "pk": 4
 },
 {
     "fields": {
+        "address": 2,
+        "created": "2016-06-03T00:48:09",
+        "kind": "",
         "number": "03 20 52 09 20",
         "representative": 1,
-        "address": 2,
-        "kind": ""
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.phone",
     "pk": 1
 },
 {
     "fields": {
-        "abbreviation": "EP",
-        "country": null,
-        "name": "European Parliament"
+        "abbreviation": "AN",
+        "country": 1095,
+        "fingerprint": "8b770fa0d351f5eedd59c8999a77ae020ce52fd6",
+        "name": "Assembl\u00e9e nationale"
     },
     "model": "representatives.chamber",
     "pk": 1
 },
 {
     "fields": {
-        "abbreviation": "AN",
+        "abbreviation": "SEN",
         "country": 1095,
-        "name": "Assembl\u00e9e nationale"
+        "fingerprint": "5d034a868e0bc4b19ca05fb86cb1e3a87fa8f10d",
+        "name": "S\u00e9nat"
     },
     "model": "representatives.chamber",
     "pk": 2
 },
 {
     "fields": {
-        "abbreviation": "SEN",
-        "country": 1095,
-        "name": "S\u00e9nat"
-    },
-    "model": "representatives.chamber",
-    "pk": 3
-},
-{
-    "fields": {
-        "name": "European Parliament",
-        "kind": "chamber",
-        "abbreviation": "EP",
-        "chamber": 1
-    },
-    "model": "representatives.group",
-    "pk": 1
-},
-{
-    "fields": {
-        "name": "France",
-        "kind": "country",
         "abbreviation": "FR",
-        "chamber": null
+        "chamber": null,
+        "created": "2016-06-03T00:48:09",
+        "fingerprint": "32d99ecf600be9f7abf83dafc82b7ff135405464",
+        "kind": "country",
+        "name": "France",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.group",
-    "pk": 2
+    "pk": 1
 },
 {
     "fields": {
-        "name": "Assembl\u00e9e nationale",
-        "kind": "chamber",
         "abbreviation": "AN",
-        "chamber": 2
-    },
-    "model": "representatives.group",
-    "pk": 3
-},
-{
-    "fields": {
-        "name": "Socialiste, r\u00e9publicain et citoyen",
-        "kind": "group",
-        "abbreviation": "SRC",
-        "chamber": 2
-    },
-    "model": "representatives.group",
-    "pk": 4
-},
-{
-    "fields": {
-        "name": "Nord",
-        "kind": "department",
-        "abbreviation": "59",
-        "chamber": null
-    },
-    "model": "representatives.group",
-    "pk": 5
-},
-{
-    "fields": {
-        "name": "Nord (1\u00e8re circonscription)",
-        "kind": "district",
-        "abbreviation": "59-1",
-        "chamber": null
-    },
-    "model": "representatives.group",
-    "pk": 6
-},
-{
-    "fields": {
-        "name": "Commission des lois constitutionnelles, de la l\u00e9gislation et de l'administration g\u00e9n\u00e9rale de la r\u00e9publique",
-        "kind": "committee",
-        "abbreviation": "AnComLois",
-        "chamber": 2
-    },
-    "model": "representatives.group",
-    "pk": 7
-},
-{
-    "fields": {
-        "name": "Bureau de l'assembl\u00e9e nationale",
-        "kind": "delegation",
-        "abbreviation": "",
-        "chamber": 2
-    },
-    "model": "representatives.group",
-    "pk": 8
-},
-{
-    "fields": {
-        "name": "D\u00e9l\u00e9gation charg\u00e9e de la communication et de la presse",
-        "kind": "delegation",
-        "abbreviation": "",
-        "chamber": 2
-    },
-    "model": "representatives.group",
-    "pk": 9
-},
-{
-    "fields": {
-        "name": "Groupe d'amiti\u00e9 france-mexique",
-        "kind": "delegation",
-        "abbreviation": "",
-        "chamber": 2
-    },
-    "model": "representatives.group",
-    "pk": 10
-},
-{
-    "fields": {
-        "name": "Groupe d'amiti\u00e9 france-argentine",
-        "kind": "delegation",
-        "abbreviation": "",
-        "chamber": 2
-    },
-    "model": "representatives.group",
-    "pk": 11
-},
-{
-    "fields": {
-        "name": "S\u00e9nat",
+        "chamber": 1,
+        "created": "2016-06-03T00:48:09",
+        "fingerprint": "21cc2dda04269a5ede9ac5295069be593ca4b9c1",
         "kind": "chamber",
+        "name": "Assembl\u00e9e nationale",
+        "updated": "2016-06-03T00:48:09"
+    },
+    "model": "representatives.group",
+    "pk": 2
+},
+{
+    "fields": {
+        "abbreviation": "SRC",
+        "chamber": 1,
+        "created": "2016-06-03T00:48:09",
+        "fingerprint": "ef0cf8be0da0659319ccc0e53827005783cd67ac",
+        "kind": "group",
+        "name": "Socialiste, r\u00e9publicain et citoyen",
+        "updated": "2016-06-03T00:48:09"
+    },
+    "model": "representatives.group",
+    "pk": 3
+},
+{
+    "fields": {
+        "abbreviation": "59",
+        "chamber": null,
+        "created": "2016-06-03T00:48:09",
+        "fingerprint": "da4fb8d18e7ddc97a5ce6b38372e1811104970ae",
+        "kind": "department",
+        "name": "Nord",
+        "updated": "2016-06-03T00:48:09"
+    },
+    "model": "representatives.group",
+    "pk": 4
+},
+{
+    "fields": {
+        "abbreviation": "59-1",
+        "chamber": null,
+        "created": "2016-06-03T00:48:09",
+        "fingerprint": "514c2d9e1074d533393e8f43395ff30ee263b350",
+        "kind": "district",
+        "name": "Nord (1\u00e8re circonscription)",
+        "updated": "2016-06-03T00:48:09"
+    },
+    "model": "representatives.group",
+    "pk": 5
+},
+{
+    "fields": {
+        "abbreviation": "AnComLois",
+        "chamber": 1,
+        "created": "2016-06-03T00:48:09",
+        "fingerprint": "24fca8e44e05421a371ad33e9497e54db903969f",
+        "kind": "committee",
+        "name": "Commission des lois constitutionnelles, de la l\u00e9gislation et de l'administration g\u00e9n\u00e9rale de la r\u00e9publique",
+        "updated": "2016-06-03T00:48:09"
+    },
+    "model": "representatives.group",
+    "pk": 6
+},
+{
+    "fields": {
+        "abbreviation": "",
+        "chamber": 1,
+        "created": "2016-06-03T00:48:09",
+        "fingerprint": "4f7a088e87a4eb2b8434468286058dc06674059e",
+        "kind": "delegation",
+        "name": "Bureau de l'assembl\u00e9e nationale",
+        "updated": "2016-06-03T00:48:09"
+    },
+    "model": "representatives.group",
+    "pk": 7
+},
+{
+    "fields": {
+        "abbreviation": "",
+        "chamber": 1,
+        "created": "2016-06-03T00:48:09",
+        "fingerprint": "a65c52e04e30cbd6f476cb6965b244832e857bf0",
+        "kind": "delegation",
+        "name": "D\u00e9l\u00e9gation charg\u00e9e de la communication et de la presse",
+        "updated": "2016-06-03T00:48:09"
+    },
+    "model": "representatives.group",
+    "pk": 8
+},
+{
+    "fields": {
+        "abbreviation": "",
+        "chamber": 1,
+        "created": "2016-06-03T00:48:09",
+        "fingerprint": "6bfbe3c7fe8491799d71bfa1334413c012bc897e",
+        "kind": "delegation",
+        "name": "Groupe d'amiti\u00e9 france-mexique",
+        "updated": "2016-06-03T00:48:09"
+    },
+    "model": "representatives.group",
+    "pk": 9
+},
+{
+    "fields": {
+        "abbreviation": "",
+        "chamber": 1,
+        "created": "2016-06-03T00:48:09",
+        "fingerprint": "40ab0090db870399708804e609750d6f3adb3d1a",
+        "kind": "delegation",
+        "name": "Groupe d'amiti\u00e9 france-argentine",
+        "updated": "2016-06-03T00:48:09"
+    },
+    "model": "representatives.group",
+    "pk": 10
+},
+{
+    "fields": {
         "abbreviation": "SEN",
-        "chamber": 3
+        "chamber": 2,
+        "created": "2016-06-03T00:48:09",
+        "fingerprint": "fb157b29868662e9d2312226d9b4737a3ffca785",
+        "kind": "chamber",
+        "name": "S\u00e9nat",
+        "updated": "2016-06-03T00:48:09"
+    },
+    "model": "representatives.group",
+    "pk": 11
+},
+{
+    "fields": {
+        "abbreviation": "SOC",
+        "chamber": 2,
+        "created": "2016-06-03T00:48:09",
+        "fingerprint": "decdf109163c9ab2fa5aa780d0066a0849d3afd5",
+        "kind": "group",
+        "name": "Socialiste et r\u00e9publicain",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.group",
     "pk": 12
 },
 {
     "fields": {
-        "name": "Socialiste et r\u00e9publicain",
-        "kind": "group",
-        "abbreviation": "SOC",
-        "chamber": 3
+        "abbreviation": "75",
+        "chamber": null,
+        "created": "2016-06-03T00:48:09",
+        "fingerprint": "265af93f09f118a8bc1236855a41a93c5a9ed4aa",
+        "kind": "department",
+        "name": "Paris",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.group",
     "pk": 13
 },
 {
     "fields": {
+        "abbreviation": "75-nd",
+        "chamber": null,
+        "created": "2016-06-03T00:48:09",
+        "fingerprint": "e163084b9e46bc1ce2c5cfe09ab1e5d17ec46afc",
+        "kind": "district",
         "name": "Paris",
-        "kind": "department",
-        "abbreviation": "75",
-        "chamber": null
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.group",
     "pk": 14
 },
 {
     "fields": {
-        "name": "Paris",
-        "kind": "district",
-        "abbreviation": "75-nd",
-        "chamber": null
+        "abbreviation": "SenComCult",
+        "chamber": 2,
+        "created": "2016-06-03T00:48:09",
+        "fingerprint": "08c0c4e717af475bc29df89d556d7d13c810674a",
+        "kind": "committee",
+        "name": "Commission de la culture, de l'\u00e9ducation et de la communication",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.group",
     "pk": 15
 },
 {
     "fields": {
-        "name": "Commission de la culture, de l'\u00e9ducation et de la communication",
-        "kind": "committee",
-        "abbreviation": "SenComCult",
-        "chamber": 3
+        "abbreviation": "",
+        "chamber": 2,
+        "created": "2016-06-03T00:48:09",
+        "fingerprint": "30fd1561c434ec031b48a0c98935853050c058af",
+        "kind": "delegation",
+        "name": "Groupe France-Japon",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.group",
     "pk": 16
 },
 {
     "fields": {
-        "name": "Groupe France-Japon",
-        "kind": "delegation",
-        "abbreviation": "",
-        "chamber": 3
-    },
-    "model": "representatives.group",
-    "pk": 17
-},
-{
-    "fields": {
-        "country": null,
-        "name": "European Parliament"
+        "country": 1095,
+        "created": "2016-06-03T00:48:09",
+        "fingerprint": "02968b563aa1b3ed23bc630f5fbf30ac2e8cd5b1",
+        "name": "Assembl\u00e9e nationale",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.constituency",
     "pk": 1
@@ -414,7 +490,10 @@
 {
     "fields": {
         "country": 1095,
-        "name": "Assembl\u00e9e nationale"
+        "created": "2016-06-03T00:48:09",
+        "fingerprint": "4c79b203ac948b9cf57e816a8cc2393e65e1d32f",
+        "name": "S\u00e9nat",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.constituency",
     "pk": 2
@@ -422,236 +501,282 @@
 {
     "fields": {
         "country": 1095,
-        "name": "S\u00e9nat"
+        "created": "2016-06-03T00:48:09",
+        "fingerprint": "0f7b766af1170070f36677073ab5a24a22859642",
+        "name": "Parti socialiste",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.constituency",
     "pk": 3
 },
 {
     "fields": {
-        "country": 1095,
-        "name": "Parti socialiste"
-    },
-    "model": "representatives.constituency",
-    "pk": 4
-},
-{
-    "fields": {
-        "group": 2,
-        "end_date": null,
-        "role": "membre",
-        "representative": 1,
-        "link": "",
         "begin_date": null,
-        "constituency": 4
+        "constituency": 3,
+        "created": "2016-06-03T00:48:09",
+        "end_date": null,
+        "fingerprint": "2783a767541cb2dc18b2bd2e8b0e5bb9da43a16f",
+        "group": 1,
+        "link": "",
+        "representative": 1,
+        "role": "membre",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.mandate",
     "pk": 1
 },
 {
     "fields": {
-        "group": 3,
-        "end_date": null,
-        "role": "D\u00e9put\u00e9",
-        "representative": 1,
-        "link": "",
         "begin_date": "2012-06-20",
-        "constituency": 2
+        "constituency": 1,
+        "created": "2016-06-03T00:48:09",
+        "end_date": null,
+        "fingerprint": "0e033e045efeb1123c7aa101ae7686958ac756c2",
+        "group": 2,
+        "link": "",
+        "representative": 1,
+        "role": "D\u00e9put\u00e9",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.mandate",
     "pk": 2
 },
 {
     "fields": {
-        "group": 4,
-        "end_date": null,
-        "role": "membre",
-        "representative": 1,
-        "link": "",
         "begin_date": "2012-06-20",
-        "constituency": 2
+        "constituency": 1,
+        "created": "2016-06-03T00:48:09",
+        "end_date": null,
+        "fingerprint": "5e2a470ce74d564dd411a07db35bf63d5398907b",
+        "group": 3,
+        "link": "",
+        "representative": 1,
+        "role": "membre",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.mandate",
     "pk": 3
 },
 {
     "fields": {
-        "group": 5,
-        "end_date": null,
-        "role": "membre",
-        "representative": 1,
-        "link": "",
         "begin_date": "2012-06-20",
-        "constituency": 2
+        "constituency": 1,
+        "created": "2016-06-03T00:48:09",
+        "end_date": null,
+        "fingerprint": "89f470bd551a1510ee5f1d23a0e7e6794be6a6a3",
+        "group": 4,
+        "link": "",
+        "representative": 1,
+        "role": "membre",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.mandate",
     "pk": 4
 },
 {
     "fields": {
-        "group": 6,
-        "end_date": null,
-        "role": "membre",
-        "representative": 1,
-        "link": "",
         "begin_date": "2012-06-20",
-        "constituency": 2
+        "constituency": 1,
+        "created": "2016-06-03T00:48:09",
+        "end_date": null,
+        "fingerprint": "aef6a22b17045784211948a29c9a8ee43e66c96e",
+        "group": 5,
+        "link": "",
+        "representative": 1,
+        "role": "membre",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.mandate",
     "pk": 5
 },
 {
     "fields": {
-        "group": 7,
-        "end_date": null,
-        "role": "membre",
-        "representative": 1,
-        "link": "",
         "begin_date": "2012-06-20",
-        "constituency": 2
+        "constituency": 1,
+        "created": "2016-06-03T00:48:09",
+        "end_date": null,
+        "fingerprint": "ea9757b1fe38206977d935c74c6f6a72a779f24b",
+        "group": 6,
+        "link": "",
+        "representative": 1,
+        "role": "membre",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.mandate",
     "pk": 6
 },
 {
     "fields": {
-        "group": 8,
-        "end_date": null,
-        "role": "questeur",
-        "representative": 1,
-        "link": "",
         "begin_date": "2012-06-20",
-        "constituency": 2
+        "constituency": 1,
+        "created": "2016-06-03T00:48:09",
+        "end_date": null,
+        "fingerprint": "f1ebc93fc7c16b89ae1ecd1f0b00ec8741b84071",
+        "group": 7,
+        "link": "",
+        "representative": 1,
+        "role": "questeur",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.mandate",
     "pk": 7
 },
 {
     "fields": {
-        "group": 9,
-        "end_date": null,
-        "role": "membre",
-        "representative": 1,
-        "link": "",
         "begin_date": "2012-06-20",
-        "constituency": 2
+        "constituency": 1,
+        "created": "2016-06-03T00:48:09",
+        "end_date": null,
+        "fingerprint": "4949295bc1b04b1a85d3ba95c94038538fcd7a32",
+        "group": 8,
+        "link": "",
+        "representative": 1,
+        "role": "membre",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.mandate",
     "pk": 8
 },
 {
     "fields": {
-        "group": 10,
-        "end_date": null,
-        "role": "vice-pr\u00e9sident",
-        "representative": 1,
-        "link": "",
         "begin_date": "2012-06-20",
-        "constituency": 2
+        "constituency": 1,
+        "created": "2016-06-03T00:48:09",
+        "end_date": null,
+        "fingerprint": "9f0e2e1b1e304514862252955bbd2344798156cc",
+        "group": 9,
+        "link": "",
+        "representative": 1,
+        "role": "vice-pr\u00e9sident",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.mandate",
     "pk": 9
 },
 {
     "fields": {
-        "group": 11,
-        "end_date": null,
-        "role": "vice-pr\u00e9sident",
-        "representative": 1,
-        "link": "",
         "begin_date": "2012-06-20",
-        "constituency": 2
+        "constituency": 1,
+        "created": "2016-06-03T00:48:09",
+        "end_date": null,
+        "fingerprint": "171ad808ec0593a4231cb9893168d5b465c2e89d",
+        "group": 10,
+        "link": "",
+        "representative": 1,
+        "role": "vice-pr\u00e9sident",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.mandate",
     "pk": 10
 },
 {
     "fields": {
-        "group": 2,
-        "end_date": null,
-        "role": "membre",
-        "representative": 2,
-        "link": "",
         "begin_date": null,
-        "constituency": 4
+        "constituency": 3,
+        "created": "2016-06-03T00:48:09",
+        "end_date": null,
+        "fingerprint": "5d82c4c1829b0321ae818ef8e40b21ee8cb8f270",
+        "group": 1,
+        "link": "",
+        "representative": 2,
+        "role": "membre",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.mandate",
     "pk": 11
 },
 {
     "fields": {
-        "group": 12,
-        "end_date": "2012-01-01",
-        "role": "S\u00e9nateur",
-        "representative": 2,
-        "link": "",
         "begin_date": "2004-09-26",
-        "constituency": 3
+        "constituency": 2,
+        "created": "2016-06-03T00:48:09",
+        "end_date": "2012-01-01",
+        "fingerprint": "deeca3c40348a42b71aea527f26e590a906ef88f",
+        "group": 11,
+        "link": "",
+        "representative": 2,
+        "role": "S\u00e9nateur",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.mandate",
     "pk": 12
 },
 {
     "fields": {
-        "group": 13,
-        "end_date": "2012-01-01",
-        "role": "membre",
-        "representative": 2,
-        "link": "",
         "begin_date": "2004-09-26",
-        "constituency": 3
+        "constituency": 2,
+        "created": "2016-06-03T00:48:09",
+        "end_date": "2012-01-01",
+        "fingerprint": "f0136809fae9846e45545f021c149f3f4cb84fc9",
+        "group": 12,
+        "link": "",
+        "representative": 2,
+        "role": "membre",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.mandate",
     "pk": 13
 },
 {
     "fields": {
-        "group": 14,
-        "end_date": "2012-01-01",
-        "role": "membre",
-        "representative": 2,
-        "link": "",
         "begin_date": "2004-09-26",
-        "constituency": 3
+        "constituency": 2,
+        "created": "2016-06-03T00:48:09",
+        "end_date": "2012-01-01",
+        "fingerprint": "4fb9c0ad99ac5dc715c0105b16cd018a6700742a",
+        "group": 13,
+        "link": "",
+        "representative": 2,
+        "role": "membre",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.mandate",
     "pk": 14
 },
 {
     "fields": {
-        "group": 15,
-        "end_date": "2012-01-01",
-        "role": "membre",
-        "representative": 2,
-        "link": "",
         "begin_date": "2004-09-26",
-        "constituency": 3
+        "constituency": 2,
+        "created": "2016-06-03T00:48:09",
+        "end_date": "2012-01-01",
+        "fingerprint": "6e48241293ac05e226fe5c146b08c1be244ae787",
+        "group": 14,
+        "link": "",
+        "representative": 2,
+        "role": "membre",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.mandate",
     "pk": 15
 },
 {
     "fields": {
-        "group": 16,
-        "end_date": "2012-01-01",
-        "role": "vice-pr\u00e9sident",
-        "representative": 2,
-        "link": "",
         "begin_date": "2004-09-26",
-        "constituency": 3
+        "constituency": 2,
+        "created": "2016-06-03T00:48:09",
+        "end_date": "2012-01-01",
+        "fingerprint": "aca8f90f749b90554f3ec6bf47ad4046819e424e",
+        "group": 15,
+        "link": "",
+        "representative": 2,
+        "role": "vice-pr\u00e9sident",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.mandate",
     "pk": 16
 },
 {
     "fields": {
-        "group": 17,
-        "end_date": "2012-01-01",
-        "role": "pr\u00e9sident",
-        "representative": 2,
-        "link": "",
         "begin_date": "2004-09-26",
-        "constituency": 3
+        "constituency": 2,
+        "created": "2016-06-03T00:48:09",
+        "end_date": "2012-01-01",
+        "fingerprint": "605eb78c46e469478ae7941824bcf53680ed8d5c",
+        "group": 16,
+        "link": "",
+        "representative": 2,
+        "role": "pr\u00e9sident",
+        "updated": "2016-06-03T00:48:09"
     },
     "model": "representatives.mandate",
     "pk": 17

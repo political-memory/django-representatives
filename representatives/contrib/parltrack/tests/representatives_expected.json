@@ -1,70 +1,84 @@
 [
 {
     "fields": {
+        "active": false,
+        "birth_date": "1948-10-03",
+        "birth_place": "Gries",
+        "created": "2016-06-03T00:48:10",
+        "cv": "Transport and security spokesman, \u00d6VP Delegation, European Parliament;\nsecurity spokesman, \u00d6VP Delegation, European Parliament (2006-2009); security spokesman (coordinator), EPP Group (1999-2004); Deputy Head of \u00d6VP Delegation, European Parliament (1996-2004);",
+        "fingerprint": "2a3c90346d40e9c540050534d832ceb3e0d25a49",
+        "first_name": "Hubert",
+        "full_name": "Hubert PIRKER",
+        "gender": 2,
         "last_name": "PIRKER",
         "photo": "http://www.europarl.europa.eu/mepphoto/2307.jpg",
-        "gender": 2,
         "remote_id": "2307",
-        "first_name": "Hubert",
-        "cv": "Transport and security spokesman, \u00d6VP Delegation, European Parliament;\nsecurity spokesman, \u00d6VP Delegation, European Parliament (2006-2009); security spokesman (coordinator), EPP Group (1999-2004); Deputy Head of \u00d6VP Delegation, European Parliament (1996-2004);",
-        "active": false,
-        "birth_place": "Gries",
-        "full_name": "Hubert PIRKER",
-        "birth_date": "1948-10-03",
-        "slug": "hubert-pirker"
+        "slug": "hubert-pirker",
+        "updated": "2016-06-03T00:48:10"
     },
     "model": "representatives.representative",
     "pk": 1
 },
 {
     "fields": {
+        "active": true,
+        "birth_date": "1948-10-28",
+        "birth_place": "H\u00e4ls\u00f6",
+        "created": "2016-06-03T00:48:15",
+        "cv": "",
+        "fingerprint": "314d0f4c25af31bfa2a6b286838367994b902615",
+        "first_name": "Olle",
+        "full_name": "Olle LUDVIGSSON",
+        "gender": 2,
         "last_name": "LUDVIGSSON",
         "photo": "http://www.europarl.europa.eu/mepphoto/96673.jpg",
-        "gender": 2,
         "remote_id": "96673",
-        "first_name": "Olle",
-        "cv": "",
-        "active": true,
-        "birth_place": "H\u00e4ls\u00f6",
-        "full_name": "Olle LUDVIGSSON",
-        "birth_date": "1948-10-28",
-        "slug": "olle-ludvigsson"
+        "slug": "olle-ludvigsson",
+        "updated": "2016-06-03T00:48:15"
     },
     "model": "representatives.representative",
     "pk": 2
 },
 {
     "fields": {
+        "created": "2016-06-03T00:48:17",
         "email": "olle.ludvigsson@europarl.europa.eu",
+        "kind": "official",
         "representative": 2,
-        "kind": "official"
+        "updated": "2016-06-03T00:48:17"
     },
     "model": "representatives.email",
     "pk": 1
 },
 {
     "fields": {
-        "url": "http://www.sap.se/olle",
+        "created": "2016-06-03T00:48:17",
+        "kind": "",
         "representative": 2,
-        "kind": ""
+        "updated": "2016-06-03T00:48:17",
+        "url": "http://www.sap.se/olle"
     },
     "model": "representatives.website",
     "pk": 1
 },
 {
     "fields": {
-        "url": "http://twitter.com/olleludvigsson",
+        "created": "2016-06-03T00:48:17",
+        "kind": "twitter",
         "representative": 2,
-        "kind": "twitter"
+        "updated": "2016-06-03T00:48:17",
+        "url": "http://twitter.com/olleludvigsson"
     },
     "model": "representatives.website",
     "pk": 2
 },
 {
     "fields": {
-        "url": "https://www.facebook.com/olle.ludvigsson",
+        "created": "2016-06-03T00:48:17",
+        "kind": "facebook",
         "representative": 2,
-        "kind": "facebook"
+        "updated": "2016-06-03T00:48:17",
+        "url": "https://www.facebook.com/olle.ludvigsson"
     },
     "model": "representatives.website",
     "pk": 3
@@ -72,16 +86,18 @@
 {
     "fields": {
         "city": "Brussels",
-        "name": "Brussels European Parliament",
         "country": 1050,
+        "created": "2016-06-03T00:48:17",
         "floor": "14G",
-        "number": "60",
-        "street": "rue Wiertz / Wiertzstraat",
-        "office_number": "257",
-        "representative": 2,
-        "location": "",
         "kind": "official",
-        "postcode": "1047"
+        "location": "",
+        "name": "Brussels European Parliament",
+        "number": "60",
+        "office_number": "257",
+        "postcode": "1047",
+        "representative": 2,
+        "street": "rue Wiertz / Wiertzstraat",
+        "updated": "2016-06-03T00:48:17"
     },
     "model": "representatives.address",
     "pk": 1
@@ -89,195 +105,247 @@
 {
     "fields": {
         "city": "Strasbourg",
-        "name": "Strasbourg European Parliament",
         "country": 1095,
+        "created": "2016-06-03T00:48:17",
         "floor": "T07",
-        "number": "1",
-        "street": "Av. du Pr\u00e9sident Robert Schuman - CS 91024",
-        "office_number": "070",
-        "representative": 2,
-        "location": "",
         "kind": "official",
-        "postcode": "67070"
+        "location": "",
+        "name": "Strasbourg European Parliament",
+        "number": "1",
+        "office_number": "070",
+        "postcode": "67070",
+        "representative": 2,
+        "street": "Av. du Pr\u00e9sident Robert Schuman - CS 91024",
+        "updated": "2016-06-03T00:48:17"
     },
     "model": "representatives.address",
     "pk": 2
 },
 {
     "fields": {
+        "address": 1,
+        "created": "2016-06-03T00:48:17",
+        "kind": "office phone",
         "number": "+322 28 45442",
         "representative": 2,
-        "address": 1,
-        "kind": "office phone"
+        "updated": "2016-06-03T00:48:17"
     },
     "model": "representatives.phone",
     "pk": 1
 },
 {
     "fields": {
+        "address": 2,
+        "created": "2016-06-03T00:48:17",
+        "kind": "office phone",
         "number": "+333 88 1 75442",
         "representative": 2,
-        "address": 2,
-        "kind": "office phone"
+        "updated": "2016-06-03T00:48:17"
     },
     "model": "representatives.phone",
     "pk": 2
 },
 {
     "fields": {
+        "abbreviation": "EP",
         "country": null,
-        "name": "European Parliament",
-        "abbreviation": "EP"
+        "fingerprint": "04e7ae3c27a702f38e38d67467295f472092ad1d",
+        "name": "European Parliament"
     },
     "model": "representatives.chamber",
     "pk": 1
 },
 {
     "fields": {
-        "name": "European Parliament",
-        "kind": "chamber",
         "abbreviation": "EP",
-        "chamber": 1
+        "chamber": 1,
+        "created": "2016-06-03T00:48:10",
+        "fingerprint": "3854c41f7028c9dc769be1fd19cefb75b454ffc4",
+        "kind": "chamber",
+        "name": "European Parliament",
+        "updated": "2016-06-03T00:48:10"
     },
     "model": "representatives.group",
     "pk": 1
 },
 {
     "fields": {
-        "name": "Committee on Employment and Social Affairs",
-        "kind": "committee",
         "abbreviation": "EMPL",
-        "chamber": 1
+        "chamber": 1,
+        "created": "2016-06-03T00:48:10",
+        "fingerprint": "61a64bd5435f9585144a74ba94729a22077384f7",
+        "kind": "committee",
+        "name": "Committee on Employment and Social Affairs",
+        "updated": "2016-06-03T00:48:10"
     },
     "model": "representatives.group",
     "pk": 2
 },
 {
     "fields": {
-        "name": "Delegation for relations with the countries of Southeast Asia and the Association of Southeast Asian Nations (ASEAN)",
-        "kind": "delegation",
         "abbreviation": "",
-        "chamber": 1
+        "chamber": 1,
+        "created": "2016-06-03T00:48:10",
+        "fingerprint": "602e23c6eb698a4d711527c16879c86f8ce31f54",
+        "kind": "delegation",
+        "name": "Delegation for relations with the countries of Southeast Asia and the Association of Southeast Asian Nations (ASEAN)",
+        "updated": "2016-06-03T00:48:10"
     },
     "model": "representatives.group",
     "pk": 3
 },
 {
     "fields": {
-        "name": "Delegation for relations with the Member States of ASEAN, South-east Asia and the Republic of Korea",
-        "kind": "delegation",
         "abbreviation": "",
-        "chamber": 1
+        "chamber": 1,
+        "created": "2016-06-03T00:48:10",
+        "fingerprint": "b87c69b92460e0fa7181d2ef3323ef8e3ba175f0",
+        "kind": "delegation",
+        "name": "Delegation for relations with the Member States of ASEAN, South-east Asia and the Republic of Korea",
+        "updated": "2016-06-03T00:48:10"
     },
     "model": "representatives.group",
     "pk": 4
 },
 {
     "fields": {
-        "name": "Group of the European People's Party (Christian Democrats) and European Democrats",
-        "kind": "group",
         "abbreviation": "PPE-DE",
-        "chamber": 1
+        "chamber": 1,
+        "created": "2016-06-03T00:48:10",
+        "fingerprint": "f4baddd7b0d4f4eb3ce0d84dfcae5c5fc78f8bc2",
+        "kind": "group",
+        "name": "Group of the European People's Party (Christian Democrats) and European Democrats",
+        "updated": "2016-06-03T00:48:10"
     },
     "model": "representatives.group",
     "pk": 5
 },
 {
     "fields": {
-        "name": "Group of the European People's Party (Christian-Democratic Group)",
-        "kind": "group",
         "abbreviation": "EPP",
-        "chamber": 1
+        "chamber": 1,
+        "created": "2016-06-03T00:48:10",
+        "fingerprint": "afd75ef7163994e134c93e36ac7933dd8d6c83e4",
+        "kind": "group",
+        "name": "Group of the European People's Party (Christian-Democratic Group)",
+        "updated": "2016-06-03T00:48:10"
     },
     "model": "representatives.group",
     "pk": 6
 },
 {
     "fields": {
-        "name": "Austria",
-        "kind": "country",
         "abbreviation": "AT",
-        "chamber": null
+        "chamber": null,
+        "created": "2016-06-03T00:48:14",
+        "fingerprint": "a8a8a43be2ac4f90059f7e3d27bd66dad1902797",
+        "kind": "country",
+        "name": "Austria",
+        "updated": "2016-06-03T00:48:14"
     },
     "model": "representatives.group",
     "pk": 7
 },
 {
     "fields": {
-        "name": "Conference of Delegation Chairs",
-        "kind": "organization",
         "abbreviation": "",
-        "chamber": null
+        "chamber": null,
+        "created": "2016-06-03T00:48:15",
+        "fingerprint": "19c4186a9ba989693628615811b978b423c653c2",
+        "kind": "organization",
+        "name": "Conference of Delegation Chairs",
+        "updated": "2016-06-03T00:48:15"
     },
     "model": "representatives.group",
     "pk": 8
 },
 {
     "fields": {
-        "name": "Committee on Economic and Monetary Affairs",
-        "kind": "committee",
         "abbreviation": "ECON",
-        "chamber": 1
+        "chamber": 1,
+        "created": "2016-06-03T00:48:15",
+        "fingerprint": "b0f7849f3b08313efa68b881ff18cba74fa95ea1",
+        "kind": "committee",
+        "name": "Committee on Economic and Monetary Affairs",
+        "updated": "2016-06-03T00:48:15"
     },
     "model": "representatives.group",
     "pk": 9
 },
 {
     "fields": {
-        "name": "Committee on Industry, Research and Energy",
-        "kind": "committee",
         "abbreviation": "ITRE",
-        "chamber": 1
+        "chamber": 1,
+        "created": "2016-06-03T00:48:15",
+        "fingerprint": "86d346f6fcb5aa2264a5409de2a09d8cd34aab87",
+        "kind": "committee",
+        "name": "Committee on Industry, Research and Energy",
+        "updated": "2016-06-03T00:48:15"
     },
     "model": "representatives.group",
     "pk": 10
 },
 {
     "fields": {
-        "name": "Delegation to the EU-Serbia Stabilisation and Association Parliamentary Committee",
-        "kind": "delegation",
         "abbreviation": "",
-        "chamber": 1
+        "chamber": 1,
+        "created": "2016-06-03T00:48:15",
+        "fingerprint": "d4456cc89c652bca85d6d6f2784c5916649f8f08",
+        "kind": "delegation",
+        "name": "Delegation to the EU-Serbia Stabilisation and Association Parliamentary Committee",
+        "updated": "2016-06-03T00:48:15"
     },
     "model": "representatives.group",
     "pk": 11
 },
 {
     "fields": {
-        "name": "Delegation for relations with Bosnia and Herzegovina, and Kosovo",
-        "kind": "delegation",
         "abbreviation": "",
-        "chamber": 1
+        "chamber": 1,
+        "created": "2016-06-03T00:48:15",
+        "fingerprint": "0ed887a0a58e014d10fdfaafaa08eda83a8c896a",
+        "kind": "delegation",
+        "name": "Delegation for relations with Bosnia and Herzegovina, and Kosovo",
+        "updated": "2016-06-03T00:48:15"
     },
     "model": "representatives.group",
     "pk": 12
 },
 {
     "fields": {
-        "name": "Delegation for relations with Australia and New Zealand",
-        "kind": "delegation",
         "abbreviation": "",
-        "chamber": 1
+        "chamber": 1,
+        "created": "2016-06-03T00:48:15",
+        "fingerprint": "60526ccdb23fc8a4a81fd278e6cb25983a2f2a26",
+        "kind": "delegation",
+        "name": "Delegation for relations with Australia and New Zealand",
+        "updated": "2016-06-03T00:48:15"
     },
     "model": "representatives.group",
     "pk": 13
 },
 {
     "fields": {
-        "name": "Group of the Progressive Alliance of Socialists and Democrats in the European Parliament",
-        "kind": "group",
         "abbreviation": "SD",
-        "chamber": 1
+        "chamber": 1,
+        "created": "2016-06-03T00:48:15",
+        "fingerprint": "11083224a4a128c55d5179abc848bf42fd9ac97c",
+        "kind": "group",
+        "name": "Group of the Progressive Alliance of Socialists and Democrats in the European Parliament",
+        "updated": "2016-06-03T00:48:15"
     },
     "model": "representatives.group",
     "pk": 14
 },
 {
     "fields": {
-        "name": "Sweden",
-        "kind": "country",
         "abbreviation": "SE",
-        "chamber": null
+        "chamber": null,
+        "created": "2016-06-03T00:48:16",
+        "fingerprint": "7af4f4785f14c123e3277c5dac40ce87e8679366",
+        "kind": "country",
+        "name": "Sweden",
+        "updated": "2016-06-03T00:48:16"
     },
     "model": "representatives.group",
     "pk": 15
@@ -285,7 +353,10 @@
 {
     "fields": {
         "country": null,
-        "name": "European Parliament"
+        "created": "2016-06-03T00:48:10",
+        "fingerprint": "bc0c3668435accfa5da4479c80478fe68d15ddb1",
+        "name": "European Parliament",
+        "updated": "2016-06-03T00:48:10"
     },
     "model": "representatives.constituency",
     "pk": 1
@@ -293,7 +364,10 @@
 {
     "fields": {
         "country": 1043,
-        "name": "\u00d6sterreichische Volkspartei"
+        "created": "2016-06-03T00:48:14",
+        "fingerprint": "74e9c77e0664716d098cb1194927b86f2aa55f7e",
+        "name": "\u00d6sterreichische Volkspartei",
+        "updated": "2016-06-03T00:48:14"
     },
     "model": "representatives.constituency",
     "pk": 2
@@ -301,293 +375,362 @@
 {
     "fields": {
         "country": 1202,
-        "name": "Arbetarepartiet- Socialdemokraterna"
+        "created": "2016-06-03T00:48:16",
+        "fingerprint": "a8fa2ff595aedee63954c3b5ad6e1dcd5dfac910",
+        "name": "Arbetarepartiet- Socialdemokraterna",
+        "updated": "2016-06-03T00:48:16"
     },
     "model": "representatives.constituency",
     "pk": 3
 },
 {
     "fields": {
-        "group": 2,
-        "end_date": "1999-07-19",
-        "role": "Substitute",
-        "representative": 1,
-        "link": "",
         "begin_date": "1997-01-16",
-        "constituency": 1
+        "constituency": 1,
+        "created": "2016-06-03T00:48:10",
+        "end_date": "1999-07-19",
+        "fingerprint": "9909758eaaa6d7c4755ffb7051a03b5aba606d7b",
+        "group": 2,
+        "link": "",
+        "representative": 1,
+        "role": "Substitute",
+        "updated": "2016-06-03T00:48:10"
     },
     "model": "representatives.mandate",
     "pk": 1
 },
 {
     "fields": {
-        "group": 3,
-        "end_date": "2014-06-30",
-        "role": "Member",
-        "representative": 1,
-        "link": "",
         "begin_date": "2013-10-09",
-        "constituency": 1
+        "constituency": 1,
+        "created": "2016-06-03T00:48:10",
+        "end_date": "2014-06-30",
+        "fingerprint": "23f40a9d7e88780795ea1f449b545ca4bcff888e",
+        "group": 3,
+        "link": "",
+        "representative": 1,
+        "role": "Member",
+        "updated": "2016-06-03T00:48:10"
     },
     "model": "representatives.mandate",
     "pk": 2
 },
 {
     "fields": {
-        "group": 4,
-        "end_date": "1997-01-15",
-        "role": "Member",
-        "representative": 1,
-        "link": "",
         "begin_date": "1996-11-14",
-        "constituency": 1
+        "constituency": 1,
+        "created": "2016-06-03T00:48:10",
+        "end_date": "1997-01-15",
+        "fingerprint": "7957d7608b4fbb69fb685cc5f5458a2049e1bb11",
+        "group": 4,
+        "link": "",
+        "representative": 1,
+        "role": "Member",
+        "updated": "2016-06-03T00:48:10"
     },
     "model": "representatives.mandate",
     "pk": 3
 },
 {
     "fields": {
-        "group": 5,
-        "end_date": "2004-07-19",
-        "role": "Member",
-        "representative": 1,
-        "link": "",
         "begin_date": "1999-07-20",
-        "constituency": 1
+        "constituency": 1,
+        "created": "2016-06-03T00:48:10",
+        "end_date": "2004-07-19",
+        "fingerprint": "3cec7f022398bb091b6407a973f71343eac17f24",
+        "group": 5,
+        "link": "",
+        "representative": 1,
+        "role": "Member",
+        "updated": "2016-06-03T00:48:10"
     },
     "model": "representatives.mandate",
     "pk": 4
 },
 {
     "fields": {
-        "group": 6,
-        "end_date": "1999-07-19",
-        "role": "Member",
-        "representative": 1,
-        "link": "",
         "begin_date": "1996-11-11",
-        "constituency": 1
+        "constituency": 1,
+        "created": "2016-06-03T00:48:10",
+        "end_date": "1999-07-19",
+        "fingerprint": "ade56c51586bee659371b716879d468bb5ba1e93",
+        "group": 6,
+        "link": "",
+        "representative": 1,
+        "role": "Member",
+        "updated": "2016-06-03T00:48:10"
     },
     "model": "representatives.mandate",
     "pk": 5
 },
 {
     "fields": {
-        "group": 7,
-        "end_date": "2004-07-19",
-        "role": "",
-        "representative": 1,
-        "link": "",
         "begin_date": "1999-07-20",
-        "constituency": 2
+        "constituency": 2,
+        "created": "2016-06-03T00:48:14",
+        "end_date": "2004-07-19",
+        "fingerprint": "78b7c46472eef9899626f674b347d749ac4aeff8",
+        "group": 7,
+        "link": "",
+        "representative": 1,
+        "role": "",
+        "updated": "2016-06-03T00:48:14"
     },
     "model": "representatives.mandate",
     "pk": 6
 },
 {
     "fields": {
-        "group": 1,
-        "end_date": "2004-07-19",
-        "role": "",
-        "representative": 1,
-        "link": "",
         "begin_date": "1999-07-20",
-        "constituency": 1
+        "constituency": 1,
+        "created": "2016-06-03T00:48:14",
+        "end_date": "2004-07-19",
+        "fingerprint": "01e6027ff075f49069c21845fff36e8f07a2fd04",
+        "group": 1,
+        "link": "",
+        "representative": 1,
+        "role": "",
+        "updated": "2016-06-03T00:48:14"
     },
     "model": "representatives.mandate",
     "pk": 7
 },
 {
     "fields": {
-        "group": 7,
-        "end_date": "1999-07-19",
-        "role": "",
-        "representative": 1,
-        "link": "",
         "begin_date": "1996-11-11",
-        "constituency": 2
+        "constituency": 2,
+        "created": "2016-06-03T00:48:15",
+        "end_date": "1999-07-19",
+        "fingerprint": "6183d065773110a3096086fec8a347f8b50da5b5",
+        "group": 7,
+        "link": "",
+        "representative": 1,
+        "role": "",
+        "updated": "2016-06-03T00:48:15"
     },
     "model": "representatives.mandate",
     "pk": 8
 },
 {
     "fields": {
-        "group": 1,
-        "end_date": "1999-07-19",
-        "role": "",
-        "representative": 1,
-        "link": "",
         "begin_date": "1996-11-11",
-        "constituency": 1
+        "constituency": 1,
+        "created": "2016-06-03T00:48:15",
+        "end_date": "1999-07-19",
+        "fingerprint": "b8b54bc79d33b2c403a243ac6831d46142893d42",
+        "group": 1,
+        "link": "",
+        "representative": 1,
+        "role": "",
+        "updated": "2016-06-03T00:48:15"
     },
     "model": "representatives.mandate",
     "pk": 9
 },
 {
     "fields": {
-        "group": 8,
-        "end_date": "2009-07-13",
-        "role": "Member",
-        "representative": 1,
-        "link": "",
         "begin_date": "2006-03-21",
-        "constituency": 1
+        "constituency": 1,
+        "created": "2016-06-03T00:48:15",
+        "end_date": "2009-07-13",
+        "fingerprint": "539d5ebadf366855e56fa40fcee7ca4c92c2eb86",
+        "group": 8,
+        "link": "",
+        "representative": 1,
+        "role": "Member",
+        "updated": "2016-06-03T00:48:15"
     },
     "model": "representatives.mandate",
     "pk": 10
 },
 {
     "fields": {
-        "group": 9,
-        "end_date": "9999-12-31",
-        "role": "Member",
-        "representative": 2,
-        "link": "",
         "begin_date": "2014-07-01",
-        "constituency": 1
+        "constituency": 1,
+        "created": "2016-06-03T00:48:15",
+        "end_date": "9999-12-31",
+        "fingerprint": "8c5d1a7427134e7d3f8addeca1e37103af28f84a",
+        "group": 9,
+        "link": "",
+        "representative": 2,
+        "role": "Member",
+        "updated": "2016-06-03T00:48:15"
     },
     "model": "representatives.mandate",
     "pk": 11
 },
 {
     "fields": {
-        "group": 10,
-        "end_date": "9999-12-31",
-        "role": "Substitute",
-        "representative": 2,
-        "link": "",
         "begin_date": "2014-07-08",
-        "constituency": 1
+        "constituency": 1,
+        "created": "2016-06-03T00:48:15",
+        "end_date": "9999-12-31",
+        "fingerprint": "cf733ad904a86c4b885f4847a103d0b142173c4a",
+        "group": 10,
+        "link": "",
+        "representative": 2,
+        "role": "Substitute",
+        "updated": "2016-06-03T00:48:15"
     },
     "model": "representatives.mandate",
     "pk": 12
 },
 {
     "fields": {
-        "group": 9,
-        "end_date": "2012-01-18",
-        "role": "Substitute",
-        "representative": 2,
-        "link": "",
         "begin_date": "2009-07-16",
-        "constituency": 1
+        "constituency": 1,
+        "created": "2016-06-03T00:48:15",
+        "end_date": "2012-01-18",
+        "fingerprint": "64b924b72bd95b1661a8d937b38acd44b5b666c7",
+        "group": 9,
+        "link": "",
+        "representative": 2,
+        "role": "Substitute",
+        "updated": "2016-06-03T00:48:15"
     },
     "model": "representatives.mandate",
     "pk": 13
 },
 {
     "fields": {
-        "group": 11,
-        "end_date": "9999-12-31",
-        "role": "Member",
-        "representative": 2,
-        "link": "",
         "begin_date": "2014-07-14",
-        "constituency": 1
+        "constituency": 1,
+        "created": "2016-06-03T00:48:15",
+        "end_date": "9999-12-31",
+        "fingerprint": "a7d0d704098b7509bae777fa221abedd42456ec5",
+        "group": 11,
+        "link": "",
+        "representative": 2,
+        "role": "Member",
+        "updated": "2016-06-03T00:48:15"
     },
     "model": "representatives.mandate",
     "pk": 14
 },
 {
     "fields": {
-        "group": 12,
-        "end_date": "9999-12-31",
-        "role": "Substitute",
-        "representative": 2,
-        "link": "",
         "begin_date": "2015-05-18",
-        "constituency": 1
+        "constituency": 1,
+        "created": "2016-06-03T00:48:15",
+        "end_date": "9999-12-31",
+        "fingerprint": "c49ab16c96193fb499935f27bb2481aa94ca3b57",
+        "group": 12,
+        "link": "",
+        "representative": 2,
+        "role": "Substitute",
+        "updated": "2016-06-03T00:48:15"
     },
     "model": "representatives.mandate",
     "pk": 15
 },
 {
     "fields": {
-        "group": 13,
-        "end_date": "2013-01-10",
-        "role": "Substitute",
-        "representative": 2,
-        "link": "",
         "begin_date": "2009-09-17",
-        "constituency": 1
+        "constituency": 1,
+        "created": "2016-06-03T00:48:15",
+        "end_date": "2013-01-10",
+        "fingerprint": "386104fa535801d6d16563973c88b85c411963da",
+        "group": 13,
+        "link": "",
+        "representative": 2,
+        "role": "Substitute",
+        "updated": "2016-06-03T00:48:15"
     },
     "model": "representatives.mandate",
     "pk": 16
 },
 {
     "fields": {
-        "group": 14,
-        "end_date": "9999-12-31",
-        "role": "Member",
-        "representative": 2,
-        "link": "",
         "begin_date": "2014-07-01",
-        "constituency": 1
+        "constituency": 1,
+        "created": "2016-06-03T00:48:15",
+        "end_date": "9999-12-31",
+        "fingerprint": "2aa9e4dd08748644013646336f60c47cc784d067",
+        "group": 14,
+        "link": "",
+        "representative": 2,
+        "role": "Member",
+        "updated": "2016-06-03T00:48:15"
     },
     "model": "representatives.mandate",
     "pk": 17
 },
 {
     "fields": {
-        "group": 14,
-        "end_date": "2014-06-30",
-        "role": "Member",
-        "representative": 2,
-        "link": "",
         "begin_date": "2009-07-14",
-        "constituency": 1
+        "constituency": 1,
+        "created": "2016-06-03T00:48:15",
+        "end_date": "2014-06-30",
+        "fingerprint": "f4f11f9a654dcc509c8624b8d63b150c916332c2",
+        "group": 14,
+        "link": "",
+        "representative": 2,
+        "role": "Member",
+        "updated": "2016-06-03T00:48:15"
     },
     "model": "representatives.mandate",
     "pk": 18
 },
 {
     "fields": {
-        "group": 15,
-        "end_date": "9999-12-31",
-        "role": "",
-        "representative": 2,
-        "link": "",
         "begin_date": "2014-07-01",
-        "constituency": 3
+        "constituency": 3,
+        "created": "2016-06-03T00:48:16",
+        "end_date": "9999-12-31",
+        "fingerprint": "f10a1c3999f6b3abb441afa9482fc3873d0e0f4c",
+        "group": 15,
+        "link": "",
+        "representative": 2,
+        "role": "",
+        "updated": "2016-06-03T00:48:16"
     },
     "model": "representatives.mandate",
     "pk": 19
 },
 {
     "fields": {
-        "group": 1,
-        "end_date": "9999-12-31",
-        "role": "",
-        "representative": 2,
-        "link": "",
         "begin_date": "2014-07-01",
-        "constituency": 1
+        "constituency": 1,
+        "created": "2016-06-03T00:48:16",
+        "end_date": "9999-12-31",
+        "fingerprint": "95894da183ea78665cc30adaa7792b03f48ac96c",
+        "group": 1,
+        "link": "",
+        "representative": 2,
+        "role": "",
+        "updated": "2016-06-03T00:48:16"
     },
     "model": "representatives.mandate",
     "pk": 20
 },
 {
     "fields": {
-        "group": 15,
-        "end_date": "2014-06-30",
-        "role": "",
-        "representative": 2,
-        "link": "",
         "begin_date": "2009-07-14",
-        "constituency": 3
+        "constituency": 3,
+        "created": "2016-06-03T00:48:17",
+        "end_date": "2014-06-30",
+        "fingerprint": "3dc4d6b0b41d96cfcc5237fe75ad971fdb8cf1b8",
+        "group": 15,
+        "link": "",
+        "representative": 2,
+        "role": "",
+        "updated": "2016-06-03T00:48:17"
     },
     "model": "representatives.mandate",
     "pk": 21
 },
 {
     "fields": {
-        "group": 1,
-        "end_date": "2014-06-30",
-        "role": "",
-        "representative": 2,
-        "link": "",
         "begin_date": "2009-07-14",
-        "constituency": 1
+        "constituency": 1,
+        "created": "2016-06-03T00:48:17",
+        "end_date": "2014-06-30",
+        "fingerprint": "ad3dba1bf96aa9bc555ea0cdfd9b72ea4da26f25",
+        "group": 1,
+        "link": "",
+        "representative": 2,
+        "role": "",
+        "updated": "2016-06-03T00:48:17"
     },
     "model": "representatives.mandate",
     "pk": 22
